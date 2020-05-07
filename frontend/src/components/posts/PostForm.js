@@ -5,7 +5,7 @@ function PostForm({ onSubmit }) {
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    onSubmit({ body: body });
+    onSubmit((body === "") ? alert("Empty posts not allowed!") : { body: body });
 
     // Clear the input field
     setBody("");

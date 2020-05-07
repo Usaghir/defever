@@ -13,16 +13,18 @@ class PostsPage extends React.Component {
   }
 
   async createPost(postData) {
-    try {
-      const response = await PostsApi.createPost(postData);
-      const post = response.data;
-      const newPosts = this.state.posts.concat(post);
-
-      this.setState({
-        posts: newPosts,
-      });
-    } catch (e) {
-      console.error(e);
+    if(postData !== undefined) {
+      try {
+        const response = await PostsApi.createPost(postData);
+        const post = response.data;
+        const newPosts = this.state.posts.concat(post);
+  
+        this.setState({
+          posts: newPosts,
+        });
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
 
