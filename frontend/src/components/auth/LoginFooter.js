@@ -41,7 +41,7 @@ export class LoginFooter extends Component {
   </div>
 
   <div className="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="https://www.novarepotential.se/software-development-academy/"> www.novarepotential.se</a>
+    <a href="https://www.novarepotential.se/software-development-academy/"> www.defever.se</a>
   </div>
  
 

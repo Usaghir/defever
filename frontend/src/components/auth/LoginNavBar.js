@@ -14,15 +14,15 @@ class LoginNavbar extends Component {
 
 
     return (
-        <nav className=" bg-dark " >
-            <div className="  row bg-light justify-content-around" >
-                <img className=" mr-5 " src={Logo} alt="#" style={{width:120, height:120}}/>
+      
+            <nav className=" sticky-top row bg-light justify-content-around" style={{ height:80}}>
+                <img className=" mr-3 " src={Logo} alt="#" style={{width:120, height:120}}/>
             
                 <div className=" ml-5" id="navbarColor01 "  >
                     <LoginForm onSubmit={this.login} />
                 </div>
-            </div>
-        </nav>
+            </nav>
+     
     ); 
 }
 }

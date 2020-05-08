@@ -6,11 +6,11 @@ function LoginForm({onSubmit}) {
 
     return (
         
-        <div className="card-body ">
-            <div className="d-flex flex-row">
+        
+            <div className="d-flex flex-row mt-2">
                 <div className="form-group mr-5">
-                    <label>Email:</label>
-                    <input 
+                    <label className="mb-1">Email</label>
+                    <input style={{ height:30}}
                         type="email"
                         className="form-control"
                         placeholder="Email"
@@ -19,8 +19,8 @@ function LoginForm({onSubmit}) {
                 </div>
 
                 <div className="form-group mr-3">
-                    <label>Password:</label>
-                    <input 
+                    <label className="mb-1">Password</label>
+                    <input style={{ height:30}}
                         type="password" 
                         placeholder="Password" 
                         className="form-control" 
@@ -32,7 +32,7 @@ function LoginForm({onSubmit}) {
                 
                     <button 
                         className="btn btn-info	ml-4" 
-                        style={{height: 38, position:"relative",  top: 31}}
+                        style={{height: 30, position:"relative",  top: 27}}
                         onClick={() => onSubmit({email, password})}>
                         Login
                         
@@ -41,7 +41,7 @@ function LoginForm({onSubmit}) {
                     
                 </div>
             </div>
-        </div>
+       
         
     );
 }

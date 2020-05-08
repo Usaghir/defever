@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 
 class LoginDescription extends Component {
+  
     render() {
         return (
             <div className="card  mt-4 text-dark" style = {{width:700}}>
                 <div className="card-body">
-                    <h4 className="card-title  text-primary">Welcome to the WEBIA </h4>
-                    <p>     WEBIA is a public forum that provides information and opportunity
-                                                                to discuss regarding most popular web development
-                                                                technologies topics as mentioned
-                                                                below:</p>
+                    <h4 className="card-title  text-primary">Defever Post {this.props.text1} </h4>
+                    <p>     I want to  share some information and give you opportunity
+                                                                to discuss regarding current situation of Covid-19 how can 
+                                                                it be helpful for the humans. 
+                                                                </p>
                     <ul className = "list-group list-group-flush">
-                        <li class="list-group-item"> Front-end Web-development</li>
-                        <li class="list-group-item"> Back-end Web-development </li>
-                        <li class="list-group-item"> Database using </li>
-                        <li class="list-group-item"> Version Control </li>
-                        <li class="list-group-item"> UX & UI </li>
+                        <li class="list-group-item"> Title here</li>
+                        <li class="list-group-item"> Image or Video here</li>
+                        <li class="list-group-item"> Description Text here </li>
+                        <li class="list-group-item"> Comments here </li>
+                        <li class="list-group-item"> Likes here</li>
                        
                     </ul>
                 </div>
