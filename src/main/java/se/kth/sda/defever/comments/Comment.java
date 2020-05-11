@@ -18,7 +18,8 @@ public class Comment {
   @Column(name = "likes")
   private Long likes;
 
-  @ManyToOne private Post post;
+  @ManyToOne
+  private Post post;
 
   // Hibernate requires empty constructor
   public Comment() {}
