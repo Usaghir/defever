@@ -14,14 +14,18 @@ public class Post {
 
   @Column(name = "body")
   private String body;
+  
+  @Column(name = "likes")
+  private Long likes;
 
   //    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
   //    private List<Comment> comments = new ArrayList<>();
 
   public Post() {}
 
-  public Post(String body) {
+  public Post(String body, Long likes) {
     this.body = body;
+    this.likes = likes;
   }
 
   public Long getId() {
@@ -38,5 +42,13 @@ public class Post {
 
   public void setBody(String body) {
     this.body = body;
+  }
+
+  public Long getLikes() {
+	return likes;
+  }
+
+  public void setLikes(Long likes) {
+	this.likes = likes;
   }
 }

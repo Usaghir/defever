@@ -32,6 +32,14 @@ class PostsPage extends React.Component {
     }
   }
 
+  async updatePost(newPostData) {
+    try {
+      await PostsApi.updatePost(newPostData);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   async deletePost(post) {
     try {
       await PostsApi.deletePost(post.id);
@@ -51,7 +59,8 @@ class PostsPage extends React.Component {
   }
 
   render() {
-    const posts = this.state.posts;
+    const posts = this.state.posts.sort((post1, post2) =>
+                  (post1.likes <= post2.likes) ? 1 : -1);
 
 
     return (
@@ -62,6 +71,7 @@ class PostsPage extends React.Component {
           <PostCard
             key={post.id}
             post={post}
+            onLikeClick={(newPostData) => this.updatePost(newPostData)}
             onDeleteClick={() => this.deletePost(post)}
           />
         ))}

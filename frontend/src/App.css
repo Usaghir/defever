@@ -26,3 +26,16 @@ body {
   color: #09d3ac;
 }
 
+#post-like, #comment-like {
+  background-color: rgb(7, 180, 7);
+  margin-top: -8px;
+  margin-right: 5px;
+  border-color: transparent;
+}
+
+#comment-delete {
+  background-color: rgba(201, 14, 14, 0.829);
+  margin-top: -7px;
+  border-color: transparent;
+}
+

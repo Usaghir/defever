@@ -9,8 +9,10 @@ function CommentCard({ comment, onDeleteClick }) {
       <div className="card-body">
       <div>{user.name}</div>
         <p>{comment.body}</p>
-        <button className="btn btn-danger ml-5" onClick={onDeleteClick}>
-          Delete Comment
+        <p>{(likes === 0) ? 'No' : likes} likes</p>
+        <button className="btn btn-primary btn-sm" onClick={incrementLikes} id="comment-like">Like</button>
+        <button className="btn btn-primary btn-sm" onClick={onDeleteClick} id="comment-delete">
+          Delete
         </button>
       </div>
     </div>

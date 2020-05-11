@@ -18,6 +18,11 @@ public class CommentController {
   public Comment postComment(@RequestBody Comment comment) {
     return commentService.create(comment);
   }
+  
+  @PutMapping("comments")
+  public Comment update(@RequestBody Comment updatedComment) {
+	  return commentService.update(updatedComment);
+  }
 
   @DeleteMapping("/comments/{id}")
   public void delete(@PathVariable Long id) {

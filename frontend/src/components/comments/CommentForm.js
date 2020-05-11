@@ -5,7 +5,7 @@ function CommentForm({ onSubmit }) {
 
   const handleSubmit = () => {
     // Invoke the passed in event callback
-    onSubmit((body === "") ? alert("Empty comments not allowed!") : { body: body });
+    onSubmit((body === "") ? alert("Empty comments not allowed!") : { body: body, likes: 0 });
 
     setBody("");
   };

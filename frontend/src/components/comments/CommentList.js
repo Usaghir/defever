@@ -18,7 +18,7 @@ class CommentList extends Component {
       try {
         const post = { id: this.props.post.id, body: this.props.post.body };
         const response = await CommentsApi.createComment({
-          body: commentData.body,
+          body: commentData.body, likes: commentData.likes,
           post,
         });
         const comment = response.data;
@@ -30,6 +30,18 @@ class CommentList extends Component {
       } catch (e) {
         console.error(e);
       }
+    }
+  }
+
+  async updateComment(newCommentData) {
+    try {
+      const post = { id: this.props.post.id, body: this.props.post.body};
+      await CommentsApi.updateComment({
+        id: newCommentData.id, body: newCommentData.body,
+        likes: newCommentData.likes, post,
+      });
+    } catch (e) {
+      console.error(e);
     }
   }
 
@@ -51,14 +63,14 @@ class CommentList extends Component {
     const postId = this.props.post.id;
     CommentsApi.getAllCommentsByPostId(postId)
       .then(({ data }) => {
-        console.log(data);
         this.setState({ comments: data });
       })
       .catch((err) => console.error(err.response.data));
   }
 
   render() {
-    const comments = this.state.comments;
+    const comments = this.state.comments.sort((comment1, comment2) =>
+                      (comment1.likes <= comment2.likes) ? 1 : -1);
     return (
       <div>
         <CommentForm
@@ -68,6 +80,7 @@ class CommentList extends Component {
           <CommentCard
             key={comment.id}
             comment={comment}
+            onLikeClick={(newCommentData) => this.updateComment(newCommentData)}
             onDeleteClick={() => this.deleteComment(comment)}
           />
         ))}

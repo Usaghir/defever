@@ -10,6 +10,10 @@ class CommentsApi {
     return Api.post("/comments", comment);
   }
 
+  updateComment(comment) {
+    return Api.put('/comments', comment);
+  }
+
   deleteComment(id) {
     return Api.delete("/comments/" + id);
   }
