@@ -1,9 +1,15 @@
 import React, {useState} from "react";
 import UserApi from "../../api/UserApi";
 
-function CommentCard({ comment, onDeleteClick }) {
+function CommentCard({ comment, onDeleteClick, onLikeClick }) {
   const [user, setUser] = useState(UserApi.currentUser);
   UserApi.bindCurrentUserStateSetter(setUser);
+  const [likes, setLikes] = useState(comment.likes);
+
+  const incrementLikes = () => {
+    setLikes(likes + 1);
+    onLikeClick({ id: comment.id, body: comment.body, likes: likes + 1});
+  }
   return (
     <div className="card mt-3">
       <div className="card-body">

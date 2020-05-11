@@ -18,7 +18,6 @@ class LoginPage extends Component {
     }
 
     render() {
-        let a = 0;
         return (
             <div className="wrapper"  >
                 <LoginNavbar/>
