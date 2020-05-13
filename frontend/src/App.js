@@ -12,7 +12,7 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/PostsPage";
 import ProfilePage from "./components/profile/ProfilePage";
-import ChatPage from "./components/chat/ChatPage";
+import ChatPage from "./components/chat/ChatFooter";
 
 import UserApi from "./api/UserApi";
 
