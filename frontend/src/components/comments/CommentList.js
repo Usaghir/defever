@@ -16,7 +16,8 @@ class CommentList extends Component {
   async createComment(commentData) {
     if(commentData !== undefined) {
       try {
-        const post = { id: this.props.post.id, body: this.props.post.body };
+        const post = { id: this.props.post.id, body: this.props.post.body,
+        likes: this.props.post.likes };
         const response = await CommentsApi.createComment({
           body: commentData.body, likes: commentData.likes,
           post,
@@ -35,7 +36,8 @@ class CommentList extends Component {
 
   async updateComment(newCommentData) {
     try {
-      const post = { id: this.props.post.id, body: this.props.post.body};
+      const post = { id: this.props.post.id, body: this.props.post.body,
+      likes: this.props.post.likes };
       await CommentsApi.updateComment({
         id: newCommentData.id, body: newCommentData.body,
         likes: newCommentData.likes, post,

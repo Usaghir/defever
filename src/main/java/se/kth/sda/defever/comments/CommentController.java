@@ -6,25 +6,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/comments")
 public class CommentController {
   @Autowired private CommentService commentService;
 
-  @GetMapping("/comments")
+  @GetMapping("")
   public List<Comment> getAllByPostId(@RequestParam("postId") Long postId) {
     return commentService.getAllByPostId(postId);
   }
 
-  @PostMapping("/comments")
+  @PostMapping("")
   public Comment postComment(@RequestBody Comment comment) {
     return commentService.create(comment);
   }
   
-  @PutMapping("comments")
+  @PutMapping("")
   public Comment update(@RequestBody Comment updatedComment) {
 	  return commentService.update(updatedComment);
   }
 
-  @DeleteMapping("/comments/{id}")
+  @DeleteMapping("/{id}")
   public void delete(@PathVariable Long id) {
     commentService.deleteById(id);
   }
