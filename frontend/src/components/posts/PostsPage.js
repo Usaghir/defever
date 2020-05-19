@@ -2,12 +2,14 @@ import React from "react";
 import PostsApi from "./../../api/PostsApi";
 import PostForm from "./PostForm";
 import PostCard from "./PostCard";
+import UserApi from "../../api/UserApi";
 
 class PostsPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      user: {},
       posts: [],
     };
   }
@@ -17,7 +19,9 @@ class PostsPage extends React.Component {
   async createPost(postData) {
     if(postData !== undefined) {
       try {
-        const response = await PostsApi.createPost(postData);
+        const user = this.state.user;
+        const response = await PostsApi.createPost({body: postData.body,
+        date: new Date().toLocaleString(), likes: postData.likes, user});
         const post = response.data;
         const newPosts = this.state.posts.concat(post);
   
@@ -32,7 +36,8 @@ class PostsPage extends React.Component {
 
   async updatePost(newPostData) {
     try {
-      await PostsApi.updatePost(newPostData);
+      await PostsApi.updatePost({id: newPostData.id, body: newPostData.body,
+        date: newPostData.date, likes: newPostData.likes, user: newPostData.user});
     } catch (e) {
       console.error(e);
     }
@@ -54,6 +59,9 @@ class PostsPage extends React.Component {
     PostsApi.getAllPosts()
       .then(({ data }) => this.setState({ posts: data }))
       .catch((err) => console.error(err));
+    UserApi.current()
+      .then(( {data }) => this.setState({ user: data }))
+      .catch((err) => console.error(err));
   }
 
   render() {
@@ -68,6 +76,7 @@ class PostsPage extends React.Component {
         {posts.map((post) => (
           <PostCard
             key={post.id}
+            currentUser={this.state.user}
             post={post}
             onLikeClick={(newPostData) => this.updatePost(newPostData)}
             onDeleteClick={() => this.deletePost(post)}

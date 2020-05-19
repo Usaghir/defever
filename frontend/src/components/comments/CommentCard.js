@@ -1,25 +1,25 @@
 import React, {useState} from "react";
-import UserApi from "../../api/UserApi";
 
-function CommentCard({ comment, onDeleteClick, onLikeClick }) {
-  const [user, setUser] = useState(UserApi.currentUser);
-  UserApi.bindCurrentUserStateSetter(setUser);
+function CommentCard({ currentUser, comment, onDeleteClick, onLikeClick }) {
   const [likes, setLikes] = useState(comment.likes);
 
   const incrementLikes = () => {
     setLikes(likes + 1);
-    onLikeClick({ id: comment.id, body: comment.body, likes: likes + 1});
+    onLikeClick({ id: comment.id, body: comment.body, date: comment.date,
+    likes: likes + 1, user: comment.user});
   }
   return (
     <div className="card mt-3">
       <div className="card-body">
-      <div>{user.name}</div>
+        <p className="post-comment-info">Comment by <strong>{comment.user.name}</strong> at <em>{comment.date}</em></p>
         <p>{comment.body}</p>
-        <p>{(likes === 0) ? 'No' : likes} likes</p>
+        <p className="post-comment-info">{(likes === 0) ? 'No' : likes} likes</p>
         <button className="btn btn-primary btn-sm" onClick={incrementLikes} id="comment-like">Like</button>
+        { (currentUser.id === comment.user.id) ?
         <button className="btn btn-primary btn-sm" onClick={onDeleteClick} id="comment-delete">
           Delete
         </button>
+        : null}
       </div>
     </div>
   );

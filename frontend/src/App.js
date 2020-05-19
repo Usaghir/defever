@@ -19,13 +19,12 @@ import UserApi from "./api/UserApi";
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   Auth.bindLoggedInStateSetter(setLoggedIn);
-
   const [user, setUser] = useState(UserApi.currentUser);
   UserApi.bindCurrentUserStateSetter(setUser);
 
   const loggedInRouter = (
     <Router>
-      <Navbar user={user} onLogout={() => Auth.logout()} />
+      <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
         <Switch>

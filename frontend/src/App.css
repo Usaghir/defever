@@ -35,7 +35,12 @@ body {
 
 #comment-delete {
   background-color: rgba(201, 14, 14, 0.829);
-  margin-top: -7px;
+  margin-top: -8px;
   border-color: transparent;
+}
+
+.post-comment-info{
+  color: grey;
+  font-size: 14px;
 }
 

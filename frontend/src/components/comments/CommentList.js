@@ -3,12 +3,14 @@ import React, { Component } from "react";
 import CommentsApi from "./../../api/CommentsApi";
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
+import UserApi from "../../api/UserApi";
 
 class CommentList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      user: {},
       comments: [],
     };
   }
@@ -16,11 +18,11 @@ class CommentList extends Component {
   async createComment(commentData) {
     if(commentData !== undefined) {
       try {
-        const post = { id: this.props.post.id, body: this.props.post.body,
-        likes: this.props.post.likes };
+        const post = this.props.post;
+        const user = this.state.user;
         const response = await CommentsApi.createComment({
-          body: commentData.body, likes: commentData.likes,
-          post,
+          body: commentData.body, date: new Date().toLocaleString(),
+          likes: commentData.likes, post, user,
         });
         const comment = response.data;
         const newComments = this.state.comments.concat(comment);
@@ -36,11 +38,10 @@ class CommentList extends Component {
 
   async updateComment(newCommentData) {
     try {
-      const post = { id: this.props.post.id, body: this.props.post.body,
-      likes: this.props.post.likes };
+      const post = this.props.post;
       await CommentsApi.updateComment({
-        id: newCommentData.id, body: newCommentData.body,
-        likes: newCommentData.likes, post,
+        id: newCommentData.id, body: newCommentData.body, date: newCommentData.date,
+        likes: newCommentData.likes, post, user: newCommentData.user
       });
     } catch (e) {
       console.error(e);
@@ -68,6 +69,9 @@ class CommentList extends Component {
         this.setState({ comments: data });
       })
       .catch((err) => console.error(err.response.data));
+    UserApi.current()
+      .then(({ data }) => this.setState({ user: data }))
+      .catch((err) => console.error(err));
   }
 
   render() {
@@ -81,6 +85,7 @@ class CommentList extends Component {
         {comments.map((comment) => (
           <CommentCard
             key={comment.id}
+            currentUser={this.state.user}
             comment={comment}
             onLikeClick={(newCommentData) => this.updateComment(newCommentData)}
             onDeleteClick={() => this.deleteComment(comment)}
