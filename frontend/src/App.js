@@ -12,8 +12,7 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/PostsPage";
 import ProfilePage from "./components/profile/ProfilePage";
-//import ChatPage from "./components/chat/ChatFooter";
-import ChatApi from "./components/chat/ChatApi";
+import ChatPage from "./components/chat/ChatPage";
 
 import UserApi from "./api/UserApi";
 
@@ -37,7 +36,7 @@ function App() {
           </Route>
 
           <Route path="/chat">
-            <ChatApi />
+            <ChatPage />
           </Route>
 
           <Route path="/">
