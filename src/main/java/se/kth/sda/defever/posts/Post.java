@@ -1,5 +1,7 @@
 package se.kth.sda.defever.posts;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import se.kth.sda.defever.user.User;
@@ -20,8 +22,11 @@ public class Post {
   @Column(name = "date")
   private String date;
   
-  @Column(name = "likes")
-  private Long likes;
+  @ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(name = "post_likes",
+		  	 joinColumns = {@JoinColumn(name = "post_id")},
+		  	 inverseJoinColumns = {@JoinColumn(name = "user_id")})
+  private Set<User> likes;
   
   @ManyToOne
   private User user;
@@ -31,7 +36,7 @@ public class Post {
 
   public Post() {}
 
-  public Post(String body, String date, Long likes, User user) {
+  public Post(String body, String date, Set<User> likes, User user) {
     this.body = body;
     this.date = date;
     this.likes = likes;
@@ -62,11 +67,11 @@ public class Post {
 	this.date = date;
   }
 
-public Long getLikes() {
+  public Set<User> getLikes() {
 	return likes;
   }
 
-  public void setLikes(Long likes) {
+  public void setLikes(Set<User> likes) {
 	this.likes = likes;
   }
 

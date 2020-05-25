@@ -22,7 +22,7 @@ class CommentList extends Component {
         const user = this.state.user;
         const response = await CommentsApi.createComment({
           body: commentData.body, date: new Date().toLocaleString(),
-          likes: commentData.likes, post, user,
+          likes: [], post, user,
         });
         const comment = response.data;
         const newComments = this.state.comments.concat(comment);

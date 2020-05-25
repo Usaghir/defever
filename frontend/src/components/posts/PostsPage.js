@@ -21,7 +21,7 @@ class PostsPage extends React.Component {
       try {
         const user = this.state.user;
         const response = await PostsApi.createPost({body: postData.body,
-        date: new Date().toLocaleString(), likes: postData.likes, user});
+        date: new Date().toLocaleString(), likes: [], user});
         const post = response.data;
         const newPosts = this.state.posts.concat(post);
   
@@ -37,7 +37,7 @@ class PostsPage extends React.Component {
   async updatePost(newPostData) {
     try {
       await PostsApi.updatePost({id: newPostData.id, body: newPostData.body,
-        date: newPostData.date, likes: newPostData.likes, user: newPostData.user});
+      date: newPostData.date, likes: newPostData.likes, user: newPostData.user});
     } catch (e) {
       console.error(e);
     }

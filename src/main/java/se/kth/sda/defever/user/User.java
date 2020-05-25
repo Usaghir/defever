@@ -26,6 +26,9 @@ public class User {
   @Length(min = 3, max = 100, message = "Name must be between 3-100 characters")
   @Column(name = "name")
   private String name;
+  
+  /*@ManyToMany(mappedBy = "likes")
+  private Set<Post> likedPosts;*/
 
   // Hibernate needs a default constructor to function
   public User() {}
@@ -36,10 +39,12 @@ public class User {
           String email,
       @Length(min = 5, max = 100, message = "Password length most be between 5-100 characters")
           String password,
-      @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name) {
+      @Length(min = 3, max = 100, message = "Name must be between 3-100 characters") String name/*,
+      Set<Post> likedPosts*/) {
     this.email = email;
     this.password = password;
     this.name = name;
+    //this.likedPosts = likedPosts;
   }
 
   public Long getId() {
@@ -73,4 +78,12 @@ public class User {
   public void setName(String name) {
     this.name = name;
   }
+
+  /*public Set<Post> getLikedPosts() {
+	return likedPosts;
+  }
+
+  public void setLikedPosts(Set<Post> likedPosts) {
+	this.likedPosts = likedPosts;
+  }*/
 }

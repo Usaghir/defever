@@ -3,6 +3,8 @@ package se.kth.sda.defever.comments;
 import se.kth.sda.defever.posts.Post;
 import se.kth.sda.defever.user.User;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.hibernate.annotations.OnDelete;
@@ -22,8 +24,11 @@ public class Comment {
   @Column(name = "date")
   private String date;
   
-  @Column(name = "likes")
-  private Long likes;
+  @ManyToMany(cascade = {CascadeType.ALL})
+  @JoinTable(name = "comment_likes",
+		  	 joinColumns = {@JoinColumn(name = "comment_id")},
+		  	 inverseJoinColumns = {@JoinColumn(name = "user_id")})
+  private Set<User> likes;
 
   @ManyToOne
   @OnDelete(action = OnDeleteAction.CASCADE)
@@ -35,7 +40,7 @@ public class Comment {
   // Hibernate requires empty constructor
   public Comment() {}
 
-  public Comment(Long id, String body, String date, Long likes, Post post, User user) {
+  public Comment(Long id, String body, String date, Set<User> likes, Post post, User user) {
     this.id = id;
     this.body = body;
     this.date = date;
@@ -76,11 +81,11 @@ public class Comment {
     this.post = post;
   }
 
-  public Long getLikes() {
+  public Set<User> getLikes() {
 	return likes;
   }
 
-  public void setLikes(Long likes) {
+  public void setLikes(Set<User> likes) {
 	this.likes = likes;
   }
 
