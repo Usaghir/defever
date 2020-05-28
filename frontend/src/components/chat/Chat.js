@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
-import './Chattest.css';
-import ChatUser from './ChatUser';
+import './Chat.css';
+import Online from './Online';
 import ChatRoom from './ChatRoom';
+import UserApi from '../../api/UserApi';
 
 let stompClient = null;
-export class Chat extends Component {
-  state = {
-    username: '',
-    ChatPageDisplay: 'hidden',
-    UserPageDisplay: '',
-    messageContent: '',
-    messages: [],
-    users: [''],
-  };
-
+class Chat extends Component {
   constructor(props) {
     super(props);
-    this.handleUser = this.handleUser.bind(this);
-    this.handleUserSubmit = this.handleUserSubmit.bind(this);
     this.handleMessage = this.handleMessage.bind(this);
     this.handleChatSubmit = this.handleChatSubmit.bind(this);
     this.connect = this.connect.bind(this);
@@ -28,20 +18,22 @@ export class Chat extends Component {
     this.onMessageReceived = this.onMessageReceived.bind(this);
   }
 
-  handleUser = (event) => {
-    this.setState({ username: event.target.value });
-    event.preventDefault();
+  state = {
+    username: '',
+    messageContent: '',
+    messages: [],
+    users: [],
   };
 
-  handleUserSubmit = (event) => {
-    if (this.state.username) {
-      this.connect();
-    } event.preventDefault();
-  };
+  componentDidMount() {
+    UserApi.current()
+      .then(({ data }) => this.setState({ username: data.name }))
+      .catch((err) => console.error(err));
+    this.connect();
+  }
 
   handleMessage = (event) => {
     this.setState({ messageContent: event.target.value });
-    event.preventDefault();
   };
 
   handleChatSubmit = (event) => {
@@ -51,26 +43,27 @@ export class Chat extends Component {
   };
 
   connect = (event) => {
+    
     let socket = new SockJS('http://localhost:8080/ws');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, this.onConnected, this.onError);
-    this.setState({ ChatPageDisplay: '' });
-    this.setState({ UserPageDisplay: 'hidden' }); //'hidden'
   };
 
   onConnected = () => {
     stompClient.subscribe('/topic/public', this.onMessageReceived);
 
-    // Tell your username to the server
     stompClient.send(
       '/app/chat.register',
       {},
       JSON.stringify({ sender: this.state.username, type: 'JOIN' })
     );
   };
+  onError = (error) => {
+    console.log(error);
+  };
 
   send = (event) => {
-    if (this.state.messageContent) {
+    if (this.state.messageContent && stompClient) {
       let chatMessage = {
         sender: this.state.username,
         content: this.state.messageContent,
@@ -83,59 +76,49 @@ export class Chat extends Component {
     event.preventDefault();
   };
 
-  onError = (error) => {
-    console.log(error);
-  };
+  
 
   onMessageReceived = (payload) => {
-    console.log('message received ');
     var message = JSON.parse(payload.body);
-
+    console.log(message.type);
     if (message.type === 'JOIN') {
-      this.setState((state) => {
-        const messages = state.messages.push(message.sender + ' joined');
+      this.setState({
+        messages: [...this.state.messages, message.sender + ' has joined.'],
       });
-      this.setState((state) => {
-        const users = state.users.push(message.sender);
+
+      this.setState({
+        users: [...this.state.users, message.sender],
       });
+      console.log(this.state.messages)
     } else if (message.type === 'CHAT') {
-      this.setState((state) => {
-        const messages = state.messages.push(
-          message.sender + ' ' + message.content
-        );
+      this.setState({
+        messages: [
+          ...this.state.messages,
+          message.sender + ': ' + message.content,
+        ],
       });
+      console.log(this.state.messages)
     } else if (message.type === 'LEAVE') {
-      this.setState((state) => {
-        const messages = state.messages.push(message.sender + ' Left');
+      this.setState({
+        messages: [...this.state.messages, message.sender + +' Left'],
       });
+      console.log(this.state.messages)
     }
   };
 
   render = () => {
     return (
-      <div id="username-page">
-        <ChatUser
-          userPageDisplay={this.state.UserPageDisplay}
-          formSubmit={this.handleUserSubmit}
-          valueUserName={this.state.username}
-          userChangeHandle={this.handleUser}
-        />
-
+      <div id="chat-page" className="row">
         <ChatRoom
-          chatDisplay={this.state.ChatPageDisplay}
-          chatArea={this.state.messages.map((mess, index) => (
-            <li key={index}>{mess}</li>
-          ))}
+          chatArea={this.state.messages.map((mess, index) => ((mess.includes('joined')) ?
+            <li key={index} className="shadow-lg p-3 mb-2 text-center bg-white text-success rounded text-break" >{mess} </li>
+          :<li key={index} className="shadow-lg p-3 mb-2 bg-white  rounded text-break" >{mess} </li>))}
           chatSubmit={this.handleChatSubmit}
           valueChat={this.state.messageContent}
           chatChange={this.handleMessage}
         />
 
-        <div id="username-page">
-          {this.state.users.map((use, index) => (
-            <li key={index}>{use}</li>
-          ))}
-        </div>
+        <Online onlineUsers={this.state.users} />
       </div>
     );
   };

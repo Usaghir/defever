@@ -8,8 +8,8 @@ public class ChatMessage {
     private String content;
     private String sender;
     private String receiver;
-	private LocalDateTime dateTime=LocalDateTime.now();; 
-    
+	private LocalDateTime dateTime=LocalDateTime.now();;
+
     public enum MessageType {
         CHAT,
         JOIN,
@@ -40,7 +40,7 @@ public class ChatMessage {
     public void setSender(String sender) {
         this.sender = sender;
     }
-    
+
     public String getReceiver() {
 		return receiver;
 	}
@@ -48,7 +48,7 @@ public class ChatMessage {
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
-    
+
     public LocalDateTime getDateTime() {
 		return dateTime;
 	}
