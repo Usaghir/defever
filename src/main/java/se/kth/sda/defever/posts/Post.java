@@ -22,7 +22,7 @@ public class Post {
   @Column(name = "date")
   private String date;
   
-  @ManyToMany(cascade = {CascadeType.ALL})
+  @ManyToMany
   @JoinTable(name = "post_likes",
 		  	 joinColumns = {@JoinColumn(name = "post_id")},
 		  	 inverseJoinColumns = {@JoinColumn(name = "user_id")})
