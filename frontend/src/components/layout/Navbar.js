@@ -37,7 +37,7 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/homepage" className="nav-link">
                 Home
               </Link>
             </li>

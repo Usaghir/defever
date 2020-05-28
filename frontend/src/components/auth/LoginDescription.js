@@ -12,11 +12,11 @@ class LoginDescription extends Component {
                                                                 it be helpful for the humans. 
                                                                 </p>
                     <ul className = "list-group list-group-flush">
-                        <li class="list-group-item"> Title here</li>
-                        <li class="list-group-item"> Image or Video here</li>
-                        <li class="list-group-item"> Description Text here </li>
-                        <li class="list-group-item"> Comments here </li>
-                        <li class="list-group-item"> Likes here</li>
+                        <li className="list-group-item"> Title here</li>
+                        <li className="list-group-item"> Image or Video here</li>
+                        <li className="list-group-item"> Description Text here </li>
+                        <li className="list-group-item"> Comments here </li>
+                        <li className="list-group-item"> Likes here</li>
                        
                     </ul>
                 </div>

@@ -12,8 +12,9 @@ import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/PostsPage";
 import ProfilePage from "./components/profile/ProfilePage";
-//import ChatPage from "./components/chat/ChatFooter";
-import ChatApi from "./components/chat/ChatApi";
+import Chat from "./components/chat/Chat";
+//import ChatApp from "./ChatApp";
+
 
 import UserApi from "./api/UserApi";
 
@@ -37,10 +38,10 @@ function App() {
           </Route>
 
           <Route path="/chat">
-            <ChatApi />
+            <Chat />
           </Route>
 
-          <Route path="/">
+          <Route path="/" >
             <HomePage />
           </Route>
         </Switch>
