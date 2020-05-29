@@ -12,11 +12,13 @@ import {
 function RegionsChart({ data, dataKey }) {
   return (
     <BarChart
-      width={1200}
+      width={1000}
       height={250}
       style={{ margin: "auto" }}
       margin={{ top: 30, left: 20, right: 30 }}
       data={data}
+      className =""
+      
   
     >
       <CartesianGrid strokeDasharray='3 3' />

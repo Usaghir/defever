@@ -17,19 +17,23 @@ export default function News() {
   }, []);
 
   return (
-    <div>
-      <h1>Latest News</h1>
+    <div ClassName="container mt-5">
+      <div ClassName="">
+      <div ClassName="">
+      <h1 ClassName=" m-5 justify-content-middle">Swedish News</h1>
       {news.map((item) => {
         const { source, title, description, author, url } = item;
         return (
-          <div key={source.id} className="list-group">
-            <h3> {title}</h3>
+          <div key={source.id} className="m-5 d-flex justify-content-center list-group">
+            <h3 className=" badge-primary rounded"> {title}</h3>
             <h4>{author}</h4>
             <p>{description}</p>
             <a href={url}>{url}</a>
           </div>
         );
       })}
+    </div>
+    </div>
     </div>
   );
 }

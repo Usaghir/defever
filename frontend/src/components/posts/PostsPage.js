@@ -70,11 +70,12 @@ class PostsPage extends React.Component {
 
 
     return (
-      <div>
-        <PostForm onSubmit={(postData) => this.createPost(postData)} />
+      <div className=" shadow-lg   rounded">
+        <PostForm className ="card m-5" onSubmit={(postData) => this.createPost(postData)} />
 
         {posts.map((post) => (
           <PostCard
+          className ="card m-5"
             key={post.id}
             currentUser={this.state.user}
             post={post}

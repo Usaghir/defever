@@ -21,14 +21,14 @@ function CountriesChart({ data, dataKey }) {
 
   return (
     <BarChart
-      width={1200}
+      width={1000}
       height={250}
       style={{ margin: "auto" }}
       margin={{ top: 30, left: 20, right: 30 }}
       data={data}
       onClick={onClick}
     >
-      <CartesianGrid strokeDasharray='3 3' />
+      <CartesianGrid  strokeDasharray='3 3' />
       <XAxis dataKey='country' />
       <YAxis />
       <Tooltip />

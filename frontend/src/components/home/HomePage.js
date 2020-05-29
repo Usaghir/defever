@@ -9,9 +9,10 @@ import { Tabs, Tab } from "react-bootstrap";
 class HomePage extends Component {
   render() {
     return (
-      <Tabs variant="pills" defaultActiveKey="covidSE" id="uncontrolled-tab-example">
-        <Tab eventKey="covidSE" title="Sweden">
-          <CovidSE />
+      <div className ="bg-light rounded w-110">
+      <Tabs variant="pills" className ="justify-content-center" defaultActiveKey="covidSE" id="uncontrolled-tab-example">
+        <Tab eventKey="covidSE" className ="bg-blue" title="Sweden">
+          <CovidSE className =""/>
           <HomeFooter />
         </Tab>
         <Tab eventKey="covidWorld" title="World">
@@ -23,6 +24,7 @@ class HomePage extends Component {
           <HomeFooter />
         </Tab>
       </Tabs>
+      </div>
     );
   }
 }
