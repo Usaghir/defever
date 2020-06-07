@@ -28,14 +28,7 @@ class LoginPage extends Component {
             
                             
                            <LoginDescription text1="By Raja Umer"/>
-                           <LoginDescription text1="By FeiFei"/>
-                           <LoginDescription text1="By Imanol"/>
-                           <LoginDescription text1="By Riaz"/>
-                           <LoginDescription text1="By Akateh"/>
-                           <LoginDescription text1="By Simon"/>
-                           <LoginDescription text1="By Rasmus"/>
-                           <LoginDescription text1="By Sladjan"/>
-                           <LoginDescription text1="By Erika"/>
+                           
 
                         </div>
 
@@ -45,10 +38,10 @@ class LoginPage extends Component {
                                     <RegisterForm onSubmit={this.register} />
                                     <div className=" mt-4 ">
                         
-                                    <LoginTrendingPagesBar  />
+                                    
                                     </div>
                                     <div className=" mt-4 ">
-                                    <LoginTrendingPostsBar  />
+                                    
                                     </div>
                                     
                                 </div>

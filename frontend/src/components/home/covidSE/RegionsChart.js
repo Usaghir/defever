@@ -26,7 +26,7 @@ function RegionsChart({ data, dataKey }) {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey={dataKey} fill='#8884d8' />
+      <Bar dataKey={dataKey} fill='#3366ff' />
     </BarChart>
   );
 }

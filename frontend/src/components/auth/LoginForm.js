@@ -31,7 +31,7 @@ function LoginForm({onSubmit}) {
                 <div className="form-group d-flex flex-row" >
                 
                     <button 
-                        className="btn btn-info	ml-4" 
+                        className="btn btn-primary 	ml-4" 
                         style={{height: 30, position:"relative",  top: 27}}
                         onClick={() => onSubmit({email, password})}>
                         Login
