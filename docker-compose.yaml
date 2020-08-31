@@ -4,8 +4,8 @@ services:
     image: postgres:11-alpine
     environment:
        - POSTGRES_DB=defever 
-       - POSTGRES_USER=defever_user
-       - POSTGRES_PASSWORD=defever_pass
+       - POSTGRES_USER=usaghir
+       - POSTGRES_PASSWORD=Random001
     ports:
       - "5430:5432"
     volumes:

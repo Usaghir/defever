@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
-public class DefeverApplication {
+public class  DefeverApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DefeverApplication.class, args);

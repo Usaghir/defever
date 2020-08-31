@@ -10,7 +10,7 @@ import se.kth.sda.defever.user.User;
 // Object.
 @Entity
 @Table(name = "post")
-public class Post {
+public class  Post {
   @Id
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)

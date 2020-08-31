@@ -8,7 +8,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class
+UserController {
   @Autowired private UserService userService;
 
   @GetMapping("")
