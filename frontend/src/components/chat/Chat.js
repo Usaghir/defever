@@ -24,9 +24,7 @@ class Chat extends Component {
     messageContent: '',
     messages: [],
     users: [],
-    time : new Date().toLocaleString(),
-   
-    
+    time: new Date().toLocaleString(),
   };
 
   componentDidMount() {
@@ -98,16 +96,10 @@ class Chat extends Component {
           message.sender + '  : ' + message.content,
         ],
       });
-
-      
-
-
-      
     } else if (message.type === 'LEAVE') {
       this.setState({
         messages: [...this.state.messages, message.sender + +' Left'],
       });
-      
     }
   };
 
@@ -123,17 +115,17 @@ class Chat extends Component {
                 className="shadow-lg p-3 mb-2 text-center bg-white text-success rounded text-break"
               >
                 <div className="badge badge-primary text-wrap">{mess}</div>
-                  
               </li>
             ) : (
               <li
                 key={index}
                 className="row justify-content-between shadow-lg p-3 mb-2 bg-white  rounded text-break"
-              ><div>
-                <Avatar className="bg-primary mr-3">{mess[0]}</Avatar>
+              >
+                <div>
+                  <Avatar className="bg-primary mr-3">{mess[0]}</Avatar>
                   <h5>{mess}</h5>
-                  </div>
-                  <div className="badge text-wrap ">{this.state.time}</div>
+                </div>
+                <div className="badge text-wrap ">{this.state.time}</div>
               </li>
             )
           )}
@@ -141,8 +133,6 @@ class Chat extends Component {
           valueChat={this.state.messageContent}
           chatChange={this.handleMessage}
         />
-
-        
       </div>
     );
   };
