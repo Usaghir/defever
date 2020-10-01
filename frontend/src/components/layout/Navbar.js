@@ -1,28 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Logo from "./logo.png";
-import UserApi from "../../api/UserApi";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Logo from './logo.png';
+import UserApi from '../../api/UserApi';
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: {}
+      user: {},
     };
   }
 
   componentDidMount() {
     UserApi.current()
-      .then(( {data} ) => this.setState( {user: data} ))
+      .then(({ data }) => this.setState({ user: data }))
       .catch((err) => console.error(err));
   }
 
   render() {
-
     return (
-      <nav className="navbar navbar-expand-lg  bg-light">
-        <img className="navbar-brand" src={Logo} alt="#" style={{ width: 80 }} />
+      <nav className="navbar navbar-expand-lg  justify-content-around bg-light">
+        <img
+          className="navbar-brand ml-5"
+          src={Logo}
+          alt="#"
+          style={{ width: 80 }}
+        />
         <button
           className="navbar-toggler"
           type="button"
@@ -30,11 +34,12 @@ class Navbar extends React.Component {
           data-target="#navbarColor01"
           aria-controls="navbarColor01"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarColor01">
+        <div className="collapse navbar-collapse " id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to="/homepage" className="nav-link">
@@ -55,23 +60,26 @@ class Navbar extends React.Component {
             </li>
           </ul>
 
-          <div className="navbar-brand">
-            {this.state.user.name}      
-          </div>
+          <div className="navbar-brand">{this.state.user.name}</div>
 
           <div className="userContainer">
             <a href="/profile">
               <img
                 className="navbar-brand"
                 src="/avatars/manager.png"
-                style={{ width: "40px", height: "40px" }}
-                alt="User Avatar"/>
+                style={{ width: '40px', height: '40px' }}
+                alt="User Avatar"
+              />
               <div className="middle"></div>
             </a>
           </div>
           <button
-            className="btn btn-outline-info my-2 my-sm-0"
-            onClick={this.props.onLogout}>
+            className="btn btn-primary my-2 my-sm-0 border-0 rounded-0 mr-5"
+            style={{
+              backgroundColor: '#FA354D',
+            }}
+            onClick={this.props.onLogout}
+          >
             Logout
           </button>
         </div>

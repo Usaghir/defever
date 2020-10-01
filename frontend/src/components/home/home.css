@@ -1,0 +1,25 @@
+/* Inactive tab */
+
+.myClass a {
+  background-color: #6C849C;
+  color: white;
+  margin: 2%;
+}
+
+.myClass a:hover {
+  background-color: pink;
+}
+
+/* Active tab */
+
+.myClass a.active {
+  background-color: #0C2C54;
+  color: white;
+}
+
+/* Disabled tab */
+
+.myClass a.disables {
+  background-color: lightgray;
+  color: darkgray;
+}

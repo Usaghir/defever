@@ -4,8 +4,6 @@ import Auth from '../../services/Auth';
 import LoginNavbar from './LoginNavBar';
 import LoginFooter from './LoginFooter';
 import LoginDescription from './LoginDescription';
-import LoginTrendingPostsBar from './LoginTrendingPostsBar';
-import LoginTrendingPagesBar from './LoginTrendingPagesBar';
 
 class LoginPage extends Component {
   async register(registrationData) {
@@ -24,18 +22,16 @@ class LoginPage extends Component {
             <div className="col-md-6 " style={{ color: 'white' }}>
               <LoginDescription text1="By Raja Umer" />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-5 pb-5">
               <div className="col d-flex justify-content-end">
                 <div className="col-7 mt-4 ">
                   <RegisterForm onSubmit={this.register} />
-                  <div className=" mt-4 "></div>
-                  <div className=" mt-4 "></div>
+                  <div className=" mt-4"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <LoginFooter />
       </div>
     );
   }

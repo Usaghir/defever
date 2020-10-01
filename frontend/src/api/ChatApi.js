@@ -1,7 +1,7 @@
 import Api from './Api';
 
 class ChatApi {
-  getAllChat() {
+  getAllChats() {
     return Api.get('/chat');
   }
 

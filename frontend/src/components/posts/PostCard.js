@@ -26,7 +26,7 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
   };
 
   return (
-    <div className="card mt-3">
+    <div className="card mt-3 rounded-0">
       <div className="card-body">
         <p className="post-comment-info badge  text-dark  text-wrap ">
           Post by <strong>{post.user.name}</strong> at
@@ -35,7 +35,10 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
         <p>{post.body}</p>
         <p className="post-comment-info ">{likes === 0 ? 'No' : likes} likes</p>
         <button
-          className="btn btn-primary btn-sm"
+          className="btn btn-primary btn-sm rounded-0"
+          style={{
+            backgroundColor: '#0C2C54',
+          }}
           onClick={incrementLikes}
           id="post-like"
         >
@@ -45,7 +48,10 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
         </button>
         {currentUser.id === post.user.id ? (
           <button
-            className="btn btn-danger btn-sm mb-2"
+            className="btn btn-danger btn-sm mb-2 rounded-0"
+            style={{
+              backgroundColor: '#FA354D',
+            }}
             onClick={onDeleteClick}
           >
             Delete

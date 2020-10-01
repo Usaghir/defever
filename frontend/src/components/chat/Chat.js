@@ -5,6 +5,7 @@ import './Chat.css';
 import Online from './Online';
 import ChatRoom from './ChatRoom';
 import UserApi from '../../api/UserApi';
+import ChatApi from '../../api/ChatApi';
 import { Button, Avatar } from '@material-ui/core';
 
 let stompClient = null;
@@ -24,12 +25,33 @@ class Chat extends Component {
     messageContent: '',
     messages: [],
     users: [],
+    chats: [],
     time: new Date().toLocaleString(),
   };
 
   componentDidMount() {
+    ChatApi.getAllChats()
+      .then(({ data }) => {
+        data.map((dat, index) => {
+          if (dat.type === 'CHAT') {
+            this.setState({
+              messages: [
+                ...this.state.messages,
+                dat.sender + '  : ' + dat.content,
+              ],
+            });
+            /* this.setState({
+              users: [...this.state.users, dat.sender],
+            }); */
+          }
+        });
+      })
+      .catch((err) => console.error(err));
+
     UserApi.current()
-      .then(({ data }) => this.setState({ username: data.name }))
+      .then(({ data }) => {
+        this.setState({ username: data.name });
+      })
       .catch((err) => console.error(err));
     this.connect();
   }
@@ -39,7 +61,6 @@ class Chat extends Component {
   };
 
   handleChatSubmit = (event) => {
-    this.setState({ messageContent: event.target.value });
     this.send(event);
     event.preventDefault();
   };
@@ -80,15 +101,17 @@ class Chat extends Component {
   onMessageReceived = (payload) => {
     var message = JSON.parse(payload.body);
     console.log(message.type);
-    if (message.type === 'JOIN') {
+    if (
+      message.type ===
+      'JOIN' /* &&
+      !this.state.messages.includes(message.sender + ' has joined') */
+    ) {
       this.setState({
         messages: [...this.state.messages, message.sender + ' has joined'],
       });
-
       this.setState({
         users: [...this.state.users, message.sender],
       });
-      console.log(this.state.messages);
     } else if (message.type === 'CHAT') {
       this.setState({
         messages: [
@@ -96,43 +119,55 @@ class Chat extends Component {
           message.sender + '  : ' + message.content,
         ],
       });
+      this.setState({
+        users: [...this.state.users, message.sender],
+      });
     } else if (message.type === 'LEAVE') {
       this.setState({
-        messages: [...this.state.messages, message.sender + +' Left'],
+        messages: [...this.state.messages, message.sender + ' Left'],
       });
     }
+    console.log(this.state.messages);
+    console.log(this.state.users);
   };
 
   render = () => {
     return (
-      <div className="row">
-        <Online onlineUsers={this.state.users} />
-        <ChatRoom
-          chatArea={this.state.messages.map((mess, index) =>
-            mess.includes('joined') ? (
-              <li
-                key={index}
-                className="shadow-lg p-3 mb-2 text-center bg-white text-success rounded text-break"
-              >
-                <div className="badge badge-primary text-wrap">{mess}</div>
-              </li>
-            ) : (
-              <li
-                key={index}
-                className="row justify-content-between shadow-lg p-3 mb-2 bg-white  rounded text-break"
-              >
-                <div>
-                  <Avatar className="bg-primary mr-3">{mess[0]}</Avatar>
-                  <h5>{mess}</h5>
-                </div>
-                <div className="badge text-wrap ">{this.state.time}</div>
-              </li>
-            )
-          )}
-          chatSubmit={this.handleChatSubmit}
-          valueChat={this.state.messageContent}
-          chatChange={this.handleMessage}
-        />
+      <div>
+        <div className="row">
+          <Online
+            onlineUsers={[...new Set(this.state.users)].filter(function (el) {
+              return el != null;
+            })}
+          />
+
+          <ChatRoom
+            chatArea={this.state.messages.map((mess, index) =>
+              mess.includes('joined') ? (
+                <li
+                  key={index}
+                  className="shadow-lg p-3 mb-2 text-center bg-white text-success  text-break"
+                >
+                  <div className="badge badge-primary text-wrap ">{mess}</div>
+                </li>
+              ) : (
+                <li
+                  key={index}
+                  className="row justify-content-between shadow-lg p-3 mb-2 bg-white   text-break"
+                >
+                  <div>
+                    <Avatar className="bg-primary mr-3">{mess[0]}</Avatar>
+                    <h5>{mess}</h5>
+                  </div>
+                  <div className="badge text-wrap ">{this.state.time}</div>
+                </li>
+              )
+            )}
+            chatSubmit={this.handleChatSubmit}
+            valueChat={this.state.messageContent}
+            chatChange={this.handleMessage}
+          />
+        </div>
       </div>
     );
   };

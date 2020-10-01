@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Import custom styles for our application
-import "./App.css";
+import './App.css';
 
-import Auth from "./services/Auth";
-import Navbar from "./components/layout/Navbar";
+import Auth from './services/Auth';
+import Navbar from './components/layout/Navbar';
 
 // Import pages
-import LoginPage from "./components/auth/LoginPage";
-import HomePage from "./components/home/HomePage";
-import PostsPage from "./components/posts/PostsPage";
-import ProfilePage from "./components/profile/ProfilePage";
-import Chat from "./components/chat/Chat";
+import LoginPage from './components/auth/LoginPage';
+import HomePage from './components/home/HomePage';
+import PostsPage from './components/posts/PostsPage';
+import ProfilePage from './components/profile/ProfilePage';
+import Chat from './components/chat/Chat';
+import LoginFooter from './components/auth/LoginFooter';
 //import ChatApp from "./ChatApp";
 
-
-import UserApi from "./api/UserApi";
+import UserApi from './api/UserApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -38,18 +38,26 @@ function App() {
           </Route>
 
           <Route path="/chat">
-            <Chat user={user}/>
+            <Chat user={user} />
           </Route>
 
-          <Route path="/" >
+          <Route path="/">
             <HomePage />
           </Route>
         </Switch>
       </div>
+      <LoginFooter />
     </Router>
   );
 
-  return loggedIn ? loggedInRouter : <LoginPage />;
+  return loggedIn ? (
+    loggedInRouter
+  ) : (
+    <div>
+      <LoginPage />
+      <LoginFooter />
+    </div>
+  );
 }
 
 export default App;

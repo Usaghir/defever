@@ -4,16 +4,25 @@ import './Chat.css';
 class ChatRoom extends Component {
   render() {
     return (
-      <div id="chat-page" className=" h-75">
-        <div className="chat-container rounded ">
+      <div id="chat-page" className=" h-75 ">
+        <div className="chat-container  ">
           <div className="chat-header">
-            <h2 className=" badge-primary rounded">Defever Chat Box</h2>
+            <h2
+              className=" badge-primary  rounded-0"
+              style={{
+                backgroundColor: '#0C2C54',
+              }}
+            >
+              Defever Chat Room
+            </h2>
           </div>
-          <ul id="messageArea">{this.props.chatArea}</ul>
+          <ul className="" id="messageArea">
+            {this.props.chatArea}
+          </ul>
           <form id="messageForm" onSubmit={this.props.chatSubmit}>
             <div className="form-group clearfix">
               <input
-                className="form-control"
+                className="form-control rounded-0"
                 id="message"
                 type="text"
                 name="messageContent"
