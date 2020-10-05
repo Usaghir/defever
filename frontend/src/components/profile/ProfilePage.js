@@ -1,5 +1,6 @@
 import React from 'react';
 import UserApi from '../../api/UserApi';
+import '../Components.css';
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class ProfilePage extends React.Component {
       <div className="container w-50">
         <div className="card rounded-0  ">
           <div className="card-body" style={{ borderRadius: '0px' }}>
-            <label>Username:</label>
+            <label className="font-weight-bold">Username</label>
             <div className="input-group">
               <input
                 type="text"
@@ -57,7 +58,7 @@ class ProfilePage extends React.Component {
           </div>
 
           <div className="card-body" style={{ borderRadius: '0px' }}>
-            <label>Email:</label>
+            <label className="font-weight-bold">Email</label>
             <div className="input-group">
               <input
                 disabled
@@ -72,7 +73,7 @@ class ProfilePage extends React.Component {
           </div>
 
           <div className="card-body" style={{ borderRadius: '0px' }}>
-            <label>Password:</label>
+            <label className="font-weight-bold">Password</label>
             <div className="input-group">
               <input
                 type="password"
@@ -86,7 +87,7 @@ class ProfilePage extends React.Component {
           </div>
           <div className="card-body">
             <button
-              className="btn btn-primary btn-sm rounded-0 border-0"
+              className="btn btn-primary btn-sm rounded-0 border-0 bebas-font"
               onClick={(e) => this.handleSubmit()}
               style={{
                 backgroundColor: '#0C2C54',

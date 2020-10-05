@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   AreaChart,
   CartesianGrid,
@@ -6,12 +6,12 @@ import {
   YAxis,
   Tooltip,
   Area,
-} from "recharts";
+} from 'recharts';
 
 const TITLE2COLOR = {
-  Cases: "#D0021B",
-  Deaths: "#4A4A4A",
-  Recovered: "#09C79C",
+  Cases: '#4A4A4A',
+  Deaths: '#D0021B',
+  Recovered: '#09C79C',
 };
 
 function HistoryChart({ title, data, lastDays, onLastDaysChange }) {
@@ -27,29 +27,28 @@ function HistoryChart({ title, data, lastDays, onLastDaysChange }) {
         margin={{ top: 10, right: 30, left: 10, bottom: 0 }}
       >
         <defs>
-          <linearGradient id={colorKey}  x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='5%' stopColor={color} stopOpacity={0.8} />
-            <stop offset='95%' stopColor={color} stopOpacity={0} />
-          </linearGradient >
+          <linearGradient id={colorKey} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor={color} stopOpacity={0.8} />
+            <stop offset="95%" stopColor={color} stopOpacity={0} />
+          </linearGradient>
         </defs>
-        <XAxis dataKey='time'  />
+        <XAxis dataKey="time" />
         <YAxis />
-        <CartesianGrid  strokeDasharray='3 3' />
+        <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Area
-          type='monotone'
-          dataKey='number'
+          type="monotone"
+          dataKey="number"
           stroke={color}
           fillOpacity={1}
           fill={`url(#${colorKey})`}
-          
         />
-      </AreaChart >
+      </AreaChart>
       <h3>{title}</h3>
       <input
-        type='range'
-        min='1'
-        max='30'
+        type="range"
+        min="1"
+        max="30"
         value={lastDays}
         onChange={onLastDaysChange}
       />

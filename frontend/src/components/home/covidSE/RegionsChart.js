@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../Components.css';
 import {
   BarChart,
   CartesianGrid,
@@ -7,20 +8,21 @@ import {
   Tooltip,
   Legend,
   Bar,
+  ResponsiveContainer,
 } from 'recharts';
 
 function RegionsChart({ data, dataKey }) {
   return (
     <BarChart
       width={1000}
-      height={250}
-      style={{ margin: 'auto' }}
-      margin={{ top: 30, left: 20, right: 30 }}
+      height={400}
       data={data}
-      className=""
+      className="font-weight-bold bebas-font ml-5 font-sm "
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="region" />
+
+      <XAxis dataKey="region" dy={20} />
+
       <YAxis />
       <Tooltip />
       <Legend />

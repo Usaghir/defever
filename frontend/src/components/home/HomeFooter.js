@@ -1,22 +1,19 @@
-
-import React, { Component } from "react";
-import {Navbar, Container, Col} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Navbar, Container, Col } from 'react-bootstrap';
 
 class HomeFooter extends Component {
-    render() {
-        let year = new Date().getFullYear();
-        return (
-            
-        <Navbar fixed="bottom" bg="dark" variant="dark">
+  render() {
+    let year = new Date().getFullYear();
+    return (
+      <Navbar fixed="bottom" bg="dark" variant="dark">
         <Container>
-            <Col lg={12} className = "text-center text-muted">
-        <div> {year}, All right reserved by Defever </div>
-            </Col>
+          <Col lg={12} className="text-center text-muted">
+            <div> {year}, All right reserved by Defever </div>
+          </Col>
         </Container>
-            
-            </Navbar>
-        );
-    }
+      </Navbar>
+    );
+  }
 }
 
 export default HomeFooter;

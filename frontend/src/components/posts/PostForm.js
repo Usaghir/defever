@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Components.css';
 
 function PostForm({ onSubmit }) {
   const [body, setBody] = React.useState('');
@@ -14,7 +15,15 @@ function PostForm({ onSubmit }) {
   return (
     <div className="card rounded-0">
       <div className="card-body">
-        <h4 className="card-title">Create Post</h4>
+        <h1
+          className="card-title bebas-font pl-5"
+          style={{
+            backgroundColor: '#0C2C54',
+            color: 'white',
+          }}
+        >
+          Create Post
+        </h1>
         <div>
           <div className="form-group">
             <textarea
@@ -26,7 +35,7 @@ function PostForm({ onSubmit }) {
 
           <div className="form-group">
             <button
-              className="btn btn-primary btn-sm rounded-0"
+              className="btn btn-primary btn-sm rounded-0 bebas-font border-0"
               onClick={handleSubmit}
               style={{
                 backgroundColor: '#0C2C54',

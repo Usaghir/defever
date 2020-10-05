@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import '../../Components.css';
 import {
   BarChart,
   CartesianGrid,
@@ -22,18 +23,17 @@ function CountriesChart({ data, dataKey }) {
   return (
     <BarChart
       width={1000}
-      height={250}
-      style={{ margin: 'auto' }}
-      margin={{ top: 30, left: 20, right: 30 }}
+      height={400}
       data={data}
       onClick={onClick}
+      className="font-weight-bold bebas-font ml-5 font-sm"
     >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="country" />
+      <CartesianGrid strokeDasharray="3 3" className="mb-5" />
+      <XAxis dataKey="country" dy={20} />
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey={dataKey} fill="#FA354D" />
+      <Bar dataKey={dataKey} fill="#0C2C54" />
     </BarChart>
   );
 }

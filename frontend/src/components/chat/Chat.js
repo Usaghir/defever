@@ -7,6 +7,7 @@ import ChatRoom from './ChatRoom';
 import UserApi from '../../api/UserApi';
 import ChatApi from '../../api/ChatApi';
 import { Button, Avatar } from '@material-ui/core';
+import '../Components.css';
 
 let stompClient = null;
 class Chat extends Component {
@@ -116,7 +117,7 @@ class Chat extends Component {
       this.setState({
         messages: [
           ...this.state.messages,
-          message.sender + '  : ' + message.content,
+          message.sender.toUpperCase() + '  : ' + message.content,
         ],
       });
       this.setState({
@@ -148,7 +149,9 @@ class Chat extends Component {
                   key={index}
                   className="shadow-lg p-3 mb-2 text-center bg-white text-success  text-break"
                 >
-                  <div className="badge badge-primary text-wrap ">{mess}</div>
+                  <div className="badge badge-success text-wrap bebas-font">
+                    {mess}
+                  </div>
                 </li>
               ) : (
                 <li
@@ -156,10 +159,15 @@ class Chat extends Component {
                   className="row justify-content-between shadow-lg p-3 mb-2 bg-white   text-break"
                 >
                   <div>
-                    <Avatar className="bg-primary mr-3">{mess[0]}</Avatar>
-                    <h5>{mess}</h5>
+                    <Avatar className="bg-primary"></Avatar>
+                    <h5 className="font-weight-bold">{mess}</h5>
                   </div>
-                  <div className="badge text-wrap ">{this.state.time}</div>
+                  <em
+                    className="mr-4 mt-2"
+                    style={{ color: '#3a3b3c', fontSize: '10px' }}
+                  >
+                    {this.state.time}
+                  </em>
                 </li>
               )
             )}

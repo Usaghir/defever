@@ -8,7 +8,7 @@ class ChatRoom extends Component {
         <div className="chat-container  ">
           <div className="chat-header">
             <h2
-              className=" badge-primary  rounded-0"
+              className=" badge-primary  rounded-0 bebas-font"
               style={{
                 backgroundColor: '#0C2C54',
               }}

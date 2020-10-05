@@ -1,35 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
+import '../../Components.css';
 
-import HistoryChart from "./HistoryChart";
-import { transformHistory } from "../utils";
-import { AppDispatch } from "../CovidWorld";
+import HistoryChart from './HistoryChart';
+import { transformHistory } from '../utils';
+import { AppDispatch } from '../CovidWorld';
 
 function HistoryChartGroup({ history = {}, lastDays = {} }) {
   const dispatch = useContext(AppDispatch);
 
   function handleLastDaysChange(e, key) {
-    dispatch({ type: "SET_LASTDAYS", key, days: e.target.value });
+    dispatch({ type: 'SET_LASTDAYS', key, days: e.target.value });
   }
 
   return (
-    <div className='history-group'>
+    <div className="history-group bebas-font">
       <HistoryChart
-        title='Cases'
+        title="Cases"
         data={transformHistory(history.cases)}
         lastDays={lastDays.cases}
-        onLastDaysChange={(e) => handleLastDaysChange(e, "cases")}
+        onLastDaysChange={(e) => handleLastDaysChange(e, 'cases')}
       />
       <HistoryChart
-        title='Deaths'
+        title="Deaths"
         data={transformHistory(history.deaths)}
         lastDays={lastDays.deaths}
-        onLastDaysChange={(e) => handleLastDaysChange(e, "deaths")}
+        onLastDaysChange={(e) => handleLastDaysChange(e, 'deaths')}
       />
       <HistoryChart
-        title='Recovered'
+        title="Recovered"
         data={transformHistory(history.recovered)}
         lastDays={lastDays.recovered}
-        onLastDaysChange={(e) => handleLastDaysChange(e, "recovered")}
+        onLastDaysChange={(e) => handleLastDaysChange(e, 'recovered')}
       />
     </div>
   );

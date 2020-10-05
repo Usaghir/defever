@@ -13,7 +13,7 @@ class HomePage extends Component {
       <div className="bg-light">
         <Tabs
           variant="tab"
-          className="pt-3 pb-3 justify-content-center myClass "
+          className="pt-3 pb-3 justify-content-center myClass bebas-font"
           defaultActiveKey="covidSE"
           id="uncontrolled-tab-example"
         >
@@ -23,7 +23,7 @@ class HomePage extends Component {
           <Tab eventKey="covidWorld" title="World">
             <CovidWorld />
           </Tab>
-          <Tab eventKey="news" title="News">
+          <Tab eventKey="news" title="Swedish News">
             <News />
           </Tab>
         </Tabs>

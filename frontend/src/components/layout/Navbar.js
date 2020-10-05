@@ -42,19 +42,37 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse " id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/homepage" className="nav-link">
+              <Link
+                to="/homepage"
+                className="nav-link font-weight-bold text-uppercase"
+                style={{
+                  color: '#0C2C54',
+                }}
+              >
                 Home
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/posts" className="nav-link">
+              <Link
+                to="/posts"
+                className="nav-link font-weight-bold text-uppercase"
+                style={{
+                  color: '#0C2C54',
+                }}
+              >
                 Posts
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to="/chat" className="nav-link">
+              <Link
+                to="/chat"
+                className="nav-link font-weight-bold text-uppercase"
+                style={{
+                  color: '#0C2C54',
+                }}
+              >
                 Chat
               </Link>
             </li>
@@ -74,7 +92,7 @@ class Navbar extends React.Component {
             </a>
           </div>
           <button
-            className="btn btn-primary my-2 my-sm-0 border-0 rounded-0 mr-5"
+            className="btn btn-primary my-2 my-sm-0 border-0 rounded-0 mr-5 bebas-font"
             style={{
               backgroundColor: '#FA354D',
             }}

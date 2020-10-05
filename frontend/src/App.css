@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  background: linear-gradient(to right, #0C2C54, #6C849C);
+  background: linear-gradient(to right, #0c2c54, #6c849c);
 }
 
 .App {
@@ -26,7 +26,8 @@ body {
   color: #09d3ac;
 }
 
-#post-like, #comment-like {
+#post-like,
+#comment-like {
   background-color: rgb(7, 180, 7);
   margin-top: -8px;
   margin-right: 5px;
@@ -57,17 +58,20 @@ body {
   margin: auto;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ccc;
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
   text-align: left;
 }
 
-.global-stats>table {
+.global-stats > table {
   margin: auto;
   margin-top: 0.5rem;
   margin-bottom: 1rem;

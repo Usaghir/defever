@@ -1,15 +1,18 @@
-import React from "react";
+import React from 'react';
+import '../../Components.css';
 
 function SelectDataKey({ onChange }) {
   return (
-    <>
-      <label htmlFor='key-select'>Select a key for sorting: </label>
-      <select id='key-select' onChange={onChange}>
-        <option value='infectedCount'>Confirmed</option>
-        <option value='intensiveCareCount'>IVA</option>
-        <option value='deathCount'>Death</option>
+    <div>
+      <label htmlFor="key-select" className="font-weight-bold mr-3 ">
+        Select a key for sorting{' '}
+      </label>
+      <select id="key-select" onChange={onChange} className="font-weight-bold">
+        <option value="infectedCount">Cases</option>
+        <option value="intensiveCareCount">Critical</option>
+        <option value="deathCount">Death</option>
       </select>
-    </>
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../Components.css';
 
 function RegisterForm({ onSubmit }) {
   const [name, setName] = useState('');
@@ -9,7 +10,7 @@ function RegisterForm({ onSubmit }) {
     <div className="card rounded-0">
       <div className="card-body">
         <h4
-          className="card-title"
+          className="card-title bebas-font font-weight-bold"
           style={{
             color: '#0C2C54',
           }}
@@ -18,7 +19,7 @@ function RegisterForm({ onSubmit }) {
         </h4>
         <div>
           <div className="form-group">
-            <label>Name:</label>
+            <label className="font-weight-bold">Name</label>
             <input
               type="text"
               className="form-control rounded-0"
@@ -29,7 +30,7 @@ function RegisterForm({ onSubmit }) {
           </div>
 
           <div className="form-group">
-            <label>Email:</label>
+            <label className="font-weight-bold">Email</label>
             <input
               type="email"
               value={email}
@@ -40,7 +41,7 @@ function RegisterForm({ onSubmit }) {
           </div>
 
           <div className="form-group">
-            <label>Password:</label>
+            <label className="font-weight-bold">Password</label>
             <input
               type="password"
               placeholder="Password"
@@ -52,7 +53,7 @@ function RegisterForm({ onSubmit }) {
 
           <div className="form-group">
             <button
-              className="btn btn-primary border-0 rounded-0"
+              className="btn btn-primary border-0 rounded-0 bebas-font"
               onClick={(e) => onSubmit({ name, email, password })}
               style={{
                 backgroundColor: '#0C2C54',

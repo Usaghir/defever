@@ -27,7 +27,7 @@ function CommentForm({ onSubmit }) {
 
           <div className="form-group">
             <button
-              className="btn btn-primary btn-sm rounded-0"
+              className="btn btn-primary btn-sm rounded-0 border-0"
               onClick={handleSubmit}
               style={{
                 backgroundColor: '#0C2C54',

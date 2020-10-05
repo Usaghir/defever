@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../Components.css';
 
 function LoginForm({ onSubmit }) {
   const [email, setEmail] = useState('');
@@ -7,14 +8,7 @@ function LoginForm({ onSubmit }) {
   return (
     <div className="d-flex flex-row mt-2">
       <div className="form-group mr-5">
-        <label
-          className="mb-1"
-          style={{
-            color: '#0C2C54',
-          }}
-        >
-          Email
-        </label>
+        <label className="mb-1  font-weight-bold">Email</label>
         <input
           style={{ height: 30 }}
           type="email"
@@ -26,14 +20,7 @@ function LoginForm({ onSubmit }) {
       </div>
 
       <div className="form-group mr-3">
-        <label
-          className="mb-1"
-          style={{
-            color: '#0C2C54',
-          }}
-        >
-          Password
-        </label>
+        <label className="mb-1  font-weight-bold">Password</label>
         <input
           style={{ height: 30 }}
           type="password"
@@ -46,7 +33,7 @@ function LoginForm({ onSubmit }) {
 
       <div className="form-group d-flex flex-row">
         <button
-          className="btn btn-primary 	ml-4 border-0 rounded-0"
+          className="btn btn-primary 	ml-4 border-0 rounded-0 bebas-font "
           style={{
             height: 30,
             position: 'relative',
