@@ -8,7 +8,6 @@ import {
   Tooltip,
   Legend,
   Bar,
-  ResponsiveContainer,
 } from 'recharts';
 
 function RegionsChart({ data, dataKey }) {

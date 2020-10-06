@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HomeFooter from './HomeFooter.js';
 import CovidWorld from './CovidWorld';
 import CovidSE from './CovidSE';
 import News from './News';

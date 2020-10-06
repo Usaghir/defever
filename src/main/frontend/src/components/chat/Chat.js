@@ -6,7 +6,7 @@ import Online from './Online';
 import ChatRoom from './ChatRoom';
 import UserApi from '../../api/UserApi';
 import ChatApi from '../../api/ChatApi';
-import { Button, Avatar } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import '../Components.css';
 
 let stompClient = null;
@@ -33,7 +33,7 @@ class Chat extends Component {
   componentDidMount() {
     ChatApi.getAllChats()
       .then(({ data }) => {
-        data.map((dat, index) => {
+        data.map((dat) => {
           if (dat.type === 'CHAT') {
             this.setState({
               messages: [
@@ -41,9 +41,6 @@ class Chat extends Component {
                 dat.sender + '  : ' + dat.content,
               ],
             });
-            /* this.setState({
-              users: [...this.state.users, dat.sender],
-            }); */
           }
         });
       })
@@ -67,7 +64,7 @@ class Chat extends Component {
   };
 
   connect = (event) => {
-    let socket = new SockJS('http://localhost:8080/ws');
+    let socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, this.onConnected, this.onError);
   };
@@ -101,7 +98,7 @@ class Chat extends Component {
 
   onMessageReceived = (payload) => {
     var message = JSON.parse(payload.body);
-    console.log(message.type);
+
     if (
       message.type ===
       'JOIN' /* &&
@@ -128,8 +125,6 @@ class Chat extends Component {
         messages: [...this.state.messages, message.sender + ' Left'],
       });
     }
-    console.log(this.state.messages);
-    console.log(this.state.users);
   };
 
   render = () => {

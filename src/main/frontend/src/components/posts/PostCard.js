@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CommentList from '../comments/CommentList';
-import { Button, Avatar } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import '../Components.css';
 
 function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
@@ -37,7 +37,7 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
             color: 'white',
           }}
         >
-          <p className="row justify-content-between">
+          <div className="row justify-content-between">
             <div className="row ml-4">
               <Avatar className=" mt-4 bg-success"></Avatar>
               <h3 className="mt-4 ml-2 font-weight-bold">{post.user.name}</h3>
@@ -48,7 +48,7 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
             >
               {post.date.toString()}
             </em>
-          </p>
+          </div>
           <p className="ml-4 mr-4" style={{ fontFamily: 'sans-serif' }}>
             {post.body}
           </p>

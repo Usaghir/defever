@@ -70,7 +70,7 @@ export class LoginFooter extends Component {
 
         <div className="footer-copyright text-center py-3">
           © 2020 Copyright:
-          <a href="" style={{ color: '#0C2C54' }}>
+          <a href="https://www.defever.se/" style={{ color: '#0C2C54' }}>
             {' '}
             www.defever.se
           </a>

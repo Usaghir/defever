@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Chat.css';
 import '../Components.css';
-import { Button, Avatar } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 //import { AccessAlarm, AccessibilityNewIcon } from '@material-ui/icons/AccessibilityNew';
 //import {  } from '@material-ui-icons';
 

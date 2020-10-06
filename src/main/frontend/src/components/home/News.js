@@ -18,12 +18,12 @@ export default function News() {
   }, []);
 
   return (
-    <div ClassName="container mt-5 mb-5">
-      {news.map((item) => {
-        const { source, title, description, author, url } = item;
+    <div className="container mt-5 mb-5">
+      {news.map((item, key) => {
+        const { title, description, author, url } = item;
         return (
           <div
-            key={source.id}
+            key={key}
             className="mt-5 mr-5 ml-5 d-flex justify-content-center list-group "
           >
             <h3
@@ -35,11 +35,13 @@ export default function News() {
             </h3>
             <h4>{author}</h4>
             <p>{description}</p>
+
             <a
               href={url}
               className="btn btn-primary rounded-0 bebas-font border-0"
               style={{ backgroundColor: '#6c849c', width: '15%' }}
               target="_blank"
+              rel="noopener noreferrer"
               onMouseOver={(e) => (e.target.style.backgroundColor = '#0C2C54')}
               onMouseLeave={(e) => (e.target.style.backgroundColor = '#6c849c')}
             >

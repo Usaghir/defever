@@ -33,7 +33,6 @@ function CovidSE() {
       const response = await fetch(SE_URL);
       const data = await response.json();
       setRegions(data.infectedByRegion);
-      console.log(data.infectedByRegion);
     };
 
     fetchRegions();

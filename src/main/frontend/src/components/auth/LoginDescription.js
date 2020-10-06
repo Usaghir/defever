@@ -6,19 +6,17 @@ class LoginDescription extends Component {
     return (
       <div className="card  mt-4 text-dark rounded-0" style={{ width: 700 }}>
         <div className="card-body">
-          <h3
-            className="card-title  bebas-font font-weight-bold"
-            style={{
-              color: '#0C2C54',
-            }}
+          <h1
+            className="card-title  bebas-font font-weight-bold pt-1 pl-2"
+            style={{ color: 'white', backgroundColor: '#0C2C54' }}
           >
             Welcome to Defever{' '}
-          </h3>
+          </h1>
           <h6 className="font-weight-bold ">
             {' '}
             Defever is a forum application which aims to give its users a space
             where to get reliable data and interact with other users in a
-            comfortable environment. Main functionalities are:
+            comfortable environment
           </h6>
           <ul className="list-group list-group-flush ">
             <li className="list-group-item ">
