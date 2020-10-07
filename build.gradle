@@ -28,13 +28,16 @@ node {
 	download = true
 
 	// Set the work directory for unpacking node
-	workDir = file("${project.buildDir}/nodejs")
+	workDir = file("${project.buildDir}src/main/frontend/nodejs")
 
 	// Set the work directory for NPM
-	npmWorkDir = file("${project.buildDir}/npm")
+	npmWorkDir = file("${project.buildDir}src/main/frontend/npm")
+
+	nodeModulesDir = file("${project.buildDir}src/main/frontend")
 }
 
 task appNpmInstall(type: NpmTask) {
+	dependsOn 'npmSetup'
 	description = "Installs all dependencies from package.json"
 	workingDir = file("${project.projectDir}/src/main/frontend")
 	args = ["install"]
@@ -50,7 +53,7 @@ task appNpmBuild(type: NpmTask) {
 task copyWebApp(type: Copy) {
 	dependsOn 'appNpmBuild'
 	from 'src/main/frontend/build'
-	into 'build/resources/main/static/.'
+	into 'build/resources/main/static/'
 }
 
 processResources{
@@ -58,36 +61,11 @@ processResources{
 }
 
 task copyFrontendToBuild(type: Copy) {
-	from "$projectDir/src/main/myreactapp/build/"
-//    include "*"
+	from "$projectDir/src/main/frontend/build/"
+
 	into "$buildDir/resources/main/static"
 }
 
-
-
-task npmBuild(type: NpmTask) {
-	execOverrides {
-//        it.ignoreExitValue = true
-		it.workingDir = 'src/main/myreactapp'
-	}
-	args = ['run', 'build']
-}
-
-task npmShowVersion(type: NpmTask) {
-	execOverrides {
-		it.ignoreExitValue = true
-		it.workingDir = 'src/main/myreactapp'
-	}
-	args = ['--version']
-}
-
-task npmInstall2(type: NpmTask) {
-	execOverrides {
-		it.ignoreExitValue = true
-		it.workingDir = 'src/main/myreactapp'
-	}
-	args = ['install']
-}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
