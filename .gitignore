@@ -37,3 +37,8 @@ out/
 
 ### .DS_Store ###
 *.DS_Store
+
+build
+out
+
+.DS_Store
