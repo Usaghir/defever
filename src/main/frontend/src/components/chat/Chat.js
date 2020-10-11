@@ -36,10 +36,7 @@ class Chat extends Component {
         data.map((dat) => {
           if (dat.type === 'CHAT') {
             this.setState({
-              messages: [
-                ...this.state.messages,
-                dat.sender + '  : ' + dat.content,
-              ],
+              messages: [...this.state.messages, dat.sender + '  : ' + dat.content],
             });
           }
         });
@@ -75,7 +72,7 @@ class Chat extends Component {
     stompClient.send(
       '/app/chat.register',
       {},
-      JSON.stringify({ sender: this.state.username, type: 'JOIN' })
+      JSON.stringify({ sender: this.state.username, type: 'JOIN' }),
     );
   };
   onError = (error) => {
@@ -112,10 +109,7 @@ class Chat extends Component {
       });
     } else if (message.type === 'CHAT') {
       this.setState({
-        messages: [
-          ...this.state.messages,
-          message.sender.toUpperCase() + '  : ' + message.content,
-        ],
+        messages: [...this.state.messages, message.sender.toUpperCase() + '  : ' + message.content],
       });
       this.setState({
         users: [...this.state.users, message.sender],
@@ -129,48 +123,41 @@ class Chat extends Component {
 
   render = () => {
     return (
-      <div>
-        <div className="row">
-          <Online
-            onlineUsers={[...new Set(this.state.users)].filter(function (el) {
-              return el != null;
-            })}
-          />
+      <div className="chat-grid-container">
+        <Online
+          onlineUsers={[...new Set(this.state.users)].filter(function (el) {
+            return el != null;
+          })}
+        />
 
-          <ChatRoom
-            chatArea={this.state.messages.map((mess, index) =>
-              mess.includes('joined') ? (
-                <li
-                  key={index}
-                  className="shadow-lg p-3 mb-2 text-center bg-white text-success  text-break"
-                >
-                  <div className="badge badge-success text-wrap bebas-font">
-                    {mess}
-                  </div>
-                </li>
-              ) : (
-                <li
-                  key={index}
-                  className="row justify-content-between shadow-lg p-3 mb-2 bg-white   text-break"
-                >
-                  <div>
-                    <Avatar className="bg-primary"></Avatar>
-                    <h5 className="font-weight-bold">{mess}</h5>
-                  </div>
-                  <em
-                    className="mr-4 mt-2"
-                    style={{ color: '#3a3b3c', fontSize: '10px' }}
-                  >
-                    {this.state.time}
-                  </em>
-                </li>
-              )
-            )}
-            chatSubmit={this.handleChatSubmit}
-            valueChat={this.state.messageContent}
-            chatChange={this.handleMessage}
-          />
-        </div>
+        <ChatRoom
+          chatArea={this.state.messages.map((mess, index) =>
+            mess.includes('joined') ? (
+              <li
+                key={index}
+                className="shadow-lg p-3 mb-2 text-center bg-white text-success  text-break"
+              >
+                <div className="badge badge-success text-wrap bebas-font">{mess}</div>
+              </li>
+            ) : (
+              <li
+                key={index}
+                className="row justify-content-between shadow-lg p-3 mb-2 bg-white   text-break"
+              >
+                <div>
+                  <Avatar className="bg-primary"></Avatar>
+                  <h5 className="font-weight-bold">{mess}</h5>
+                </div>
+                <em className="mr-4 mt-2" style={{ color: '#3a3b3c', fontSize: '10px' }}>
+                  {this.state.time}
+                </em>
+              </li>
+            ),
+          )}
+          chatSubmit={this.handleChatSubmit}
+          valueChat={this.state.messageContent}
+          chatChange={this.handleMessage}
+        />
       </div>
     );
   };

@@ -13,8 +13,8 @@ import { Avatar } from '@material-ui/core';
 class Online extends Component {
   render() {
     return (
-      <div id="chat-page" className=" w-25 h-75 rounded-0">
-        <div className="chat-container  ">
+      <div id="chat-page" className=" rounded-0">
+        <div className="chat-container">
           <div className="chat-header">
             <h3
               className=" badge-primary bebas-font"

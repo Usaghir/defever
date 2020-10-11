@@ -10,10 +10,8 @@ function RegisterForm({ onSubmit }) {
     <div className="card rounded-0">
       <div className="card-body">
         <h4
-          className="card-title bebas-font font-weight-bold"
-          style={{
-            color: '#0C2C54',
-          }}
+          className="card-title  bebas-font  pt-1 pl-2"
+          style={{ color: 'white', backgroundColor: '#0C2C54' }}
         >
           Sign up
         </h4>

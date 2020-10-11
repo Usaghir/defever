@@ -3,6 +3,7 @@ import RegisterForm from './RegisterForm';
 import Auth from '../../services/Auth';
 import LoginNavbar from './LoginNavBar';
 import LoginDescription from './LoginDescription';
+import '../Components.css';
 
 class LoginPage extends Component {
   async register(registrationData) {
@@ -14,21 +15,13 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="">
         <LoginNavbar />
         <div className="container">
-          <div className="row mt-5">
-            <div className="col-md-6 " style={{ color: 'white' }}>
-              <LoginDescription text1="By Raja Umer" />
-            </div>
-            <div className="col-md-6 mb-5 pb-5">
-              <div className="col d-flex justify-content-end">
-                <div className="col-7 mt-4 ">
-                  <RegisterForm onSubmit={this.register} />
-                  <div className=" mt-4"></div>
-                </div>
-              </div>
-            </div>
+          <div className="grid-container mt-4">
+            <LoginDescription text1="By Raja Umer" />
+
+            <RegisterForm onSubmit={this.register} />
           </div>
         </div>
       </div>

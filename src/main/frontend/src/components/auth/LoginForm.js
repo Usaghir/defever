@@ -6,7 +6,7 @@ function LoginForm({ onSubmit }) {
   const [password, setPassword] = useState('');
 
   return (
-    <div className="d-flex flex-row mt-2">
+    <div className="d-flex flex-row">
       <div className="form-group mr-5">
         <label className="mb-1  font-weight-bold">Email</label>
         <input

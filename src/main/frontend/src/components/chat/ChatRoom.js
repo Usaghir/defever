@@ -4,7 +4,7 @@ import './Chat.css';
 class ChatRoom extends Component {
   render() {
     return (
-      <div id="chat-page" className=" h-75 ">
+      <div id="chat-page" className="">
         <div className="chat-container  ">
           <div className="chat-header">
             <h2

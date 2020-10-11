@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CovidWorld from './CovidWorld';
 import CovidSE from './CovidSE';
-import News from './News';
 import './home.css';
 
 import { Tabs, Tab } from 'react-bootstrap';
@@ -21,9 +20,6 @@ class HomePage extends Component {
           </Tab>
           <Tab eventKey="covidWorld" title="World">
             <CovidWorld />
-          </Tab>
-          <Tab eventKey="news" title="Swedish News">
-            <News />
           </Tab>
         </Tabs>
       </div>
