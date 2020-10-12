@@ -34,6 +34,12 @@
   width: 80vw;
 }
 
+.history-group {
+  display: flex;
+  justify-content: flex-start;
+  margin: auto;
+}
+
 @media (max-width:850px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -50,5 +56,9 @@
   }
   .mar-r {
     margin-right: 50px;
+  }
+  .mar-l-r {
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }

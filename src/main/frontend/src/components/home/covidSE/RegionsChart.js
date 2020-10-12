@@ -13,12 +13,14 @@ import {
 
 function RegionsChart({ data, dataKey }) {
   return (
-    <ResponsiveContainer width="80%" aspect={4.0 / 2.0}>
-      <BarChart data={data} className="font-weight-bold bebas-font ml-5 font-sm ">
+    <ResponsiveContainer width="95%" height={300}>
+      <BarChart
+        data={data}
+        margin={{ top: 5, right: 10, left: 20, bottom: 5 }}
+        className=" bebas-font"
+      >
         <CartesianGrid strokeDasharray="3 3" />
-
         <XAxis dataKey="region" dy={20} />
-
         <YAxis />
         <Tooltip />
         <Legend />

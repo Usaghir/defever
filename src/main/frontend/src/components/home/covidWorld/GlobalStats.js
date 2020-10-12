@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../Components.css';
 
 function Stat({ number, color }) {
   return <span style={{ color: color, fontWeight: 'bold' }}>{number}</span>;
@@ -8,7 +9,7 @@ function GlobalStats({ stats }) {
   const { cases, deaths, recovered, active, updated } = stats;
 
   return (
-    <div className="global-stats">
+    <div className="global-stats text-center mar-l-r">
       <small>Updated on {new Date(updated).toLocaleString()}</small>
       <table>
         <tbody>

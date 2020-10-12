@@ -9,9 +9,9 @@ function SelectDataKey() {
   }
 
   return (
-    <>
+    <div className="text-center">
       <label className="font-weight-bold mr-3 " htmlFor="key-select">
-        Select a key for sorting{' '}
+        Choose{' '}
       </label>
       <select id="key-select" onChange={onChange} className="font-weight-bold">
         <option value="cases">Cases</option>
@@ -20,7 +20,7 @@ function SelectDataKey() {
         <option value="recovered">Recovered</option>
         <option value="active">Active</option>
       </select>
-    </>
+    </div>
   );
 }
 

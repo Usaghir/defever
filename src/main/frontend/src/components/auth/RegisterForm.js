@@ -7,7 +7,7 @@ function RegisterForm({ onSubmit }) {
   const [password, setPassword] = useState('');
 
   return (
-    <div className="card rounded-0">
+    <div className="card rounded-0 mt-5 mb-5">
       <div className="card-body">
         <h4
           className="card-title  bebas-font  pt-1 pl-2"

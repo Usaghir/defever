@@ -8,6 +8,7 @@ import {
   Tooltip,
   Legend,
   Bar,
+  ResponsiveContainer,
 } from 'recharts';
 import { AppDispatch } from '../CovidWorld';
 
@@ -21,20 +22,21 @@ function CountriesChart({ data, dataKey }) {
   }
 
   return (
-    <BarChart
-      width={1000}
-      height={400}
-      data={data}
-      onClick={onClick}
-      className="font-weight-bold bebas-font ml-5 font-sm"
-    >
-      <CartesianGrid strokeDasharray="3 3" className="mb-5" />
-      <XAxis dataKey="country" dy={20} />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey={dataKey} fill="#0C2C54" />
-    </BarChart>
+    <ResponsiveContainer width="95%" height={300}>
+      <BarChart
+        data={data}
+        onClick={onClick}
+        margin={{ top: 5, right: 10, left: 40, bottom: 5 }}
+        className=" bebas-font"
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="country" dy={20} />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey={dataKey} fill="#0C2C54" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }
 

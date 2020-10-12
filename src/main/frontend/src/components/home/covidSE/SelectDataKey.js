@@ -3,9 +3,9 @@ import '../../Components.css';
 
 function SelectDataKey({ onChange }) {
   return (
-    <div>
-      <label htmlFor="key-select" className="font-weight-bold mr-3 ">
-        Select a key for sorting{' '}
+    <div className="text-center">
+      <label htmlFor="key-select " className="  mr-3 font-weight-bold ">
+        Choose{' '}
       </label>
       <select id="key-select" onChange={onChange} className="font-weight-bold">
         <option value="infectedCount">Cases</option>

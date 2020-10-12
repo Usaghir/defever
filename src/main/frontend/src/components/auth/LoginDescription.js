@@ -4,7 +4,7 @@ import '../Components.css';
 class LoginDescription extends Component {
   render() {
     return (
-      <div className="card   text-dark rounded-0" style={{}}>
+      <div className="card  mt-5  mb-5 text-dark rounded-0" style={{}}>
         <div className="card-body">
           <h1
             className="card-title  bebas-font font-weight-bold pt-1 pl-2"
@@ -14,24 +14,26 @@ class LoginDescription extends Component {
           </h1>
           <h6 className="font-weight-bold ">
             {' '}
-            Defever is a forum application which aims to give its users a space where to get
-            reliable data and interact with other users in a comfortable environment
+            Defever is a forum application where users can get live visual information regarding
+            Covdid-19 as graph. Users can interact with each users using posts and chat
+            functionalities.
           </h6>
           <ul className="list-group list-group-flush ">
             <li className="list-group-item ">
               {' '}
-              Up-to-date numbers related with COVID-19 (Confirmed cases, number of people in
-              intensive care, deaths). Cases in Sweden and also an overview of other countries.
-            </li>
-            <li className="list-group-item"> Link to latest relevant news.</li>
-            <li className="list-group-item">
-              {' '}
-              Forum page where to see and interact with the most relevant topics brought up by other
-              users.{' '}
+              Up-to-date visual figures and graph display related to COVID-19 in detail (cases,
+              intensive care, deaths, recovered) in Sweden and countries with higher number and some
+              history.
             </li>
             <li className="list-group-item">
               {' '}
-              Chat page for a more direct and quick form of messaging.
+              Post page to share the thoughts as post and read other's thought as posts and respond
+              them with feedback by liking or commenting.{' '}
+            </li>
+            <li className="list-group-item">
+              {' '}
+              Chat page to where user can enter in a chat room to chat with other online users and
+              interact with them.
             </li>
           </ul>
         </div>

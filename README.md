@@ -1,13 +1,19 @@
 # DeFever
 
+##### Link to the live version of the Defever web application. 
+
+[https://defever.herokuapp.com/](https://spring.io/projects/spring-boot)
+
+
 ## Introduction
 
-DeFever is a forum application where the user can get all the latest information regarding COVID-19. After logging in, the application offers the following features:
+Defever is a forum application where users can get live visual information regarding Covid-19. User can interact with each other using posts and chat functionalities.
 
-- Home: Here the user can get all the latest news and data regarding COVID-19, including up to date information on the number of COVID related casualties per region in Sweden.
-- Posts: This is the page where a user can post or comment whatever is in their minds regarding the current situation. The user can also see the most popular posts and comments made by other users and interact with them by liking, unliking or commenting in them.
-- Chatpage: This page offers a more direct, rapid messaging option to users. The user can quickly interact with other users who happen to be online, and ask whatever question or thought they have in their mind.
-- Profile: In this page the user can update his or her username and password. 
+- Registration: User can register by adding credentials username, email and password. 
+- Home: User can get Up-to-date visual figures and graph display related to COVID-19 in detail (cases, intensive care, deaths, recovered) in Sweden and countries with higher number and some history.
+- Posts: User can post their thoughts . The user can also see the most popular posts and comments made by other users and interact with them by liking, unliking or commenting in them.
+- Chat: user can enter in chat room to chat with other online users and interact with them.
+- Profile: In this page the user can update username and password. 
 
 ## Use Case Diagram
 
@@ -19,13 +25,28 @@ DeFever is a forum application where the user can get all the latest information
 
 ## Technologies used
 
-This full-stack application is based on Spring, PostgreSQL, React, React router and Axios. Check the following links for documentation and guides:
+This full-stack application developed using following technologies. 
 
-- [Spring](https://spring.io/projects/spring-boot)
-- [PostgreSQL](https://www.postgresql.org)
+###Front-end
 - [React](https://reactjs.org)
-- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [Redux](https://redux.js.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Recharts](https://recharts.org/)
 - [Axios](https://github.com/axios/axios)
+
+###Back-end
+- [JAVA](https://www.java.com/)
+- [Spring-boot](https://spring.io/projects/spring-boot)
+- [Gradle](https://gradle.org/)
+- [Docker](https://www.docker.com/)
+- [Websocket](https://www.websocket.org/)
+- [Rest API](https://restfulapi.net/)
+
+###Database 
+
+- [PostgreSQL](https://www.postgresql.org)
+- [Hibernate](hhttps://hibernate.org/)
+
 
 ## Setup
 
@@ -51,20 +72,20 @@ To start the database open the terminal and `cd` your way in to the project root
 
 Open the root folder and import all the gradle dependencies (this has to be done only once).
 
-Make sure that the database is running (see steps above) otherwise the backend won't have access to it. Then run the main class at `src/main/java/se/kth/sda/defever/DefeverApplication.java` to start the web server.
+Make sure database is running (see steps above) otherwise the backend won't have access to it. Then run the main class at `src/main/java/se/kth/sda/defever/DefeverApplication.java` to start the web server.
 
 ### Starting the frontend development server
 
-To install the project dependencies for the frontend, open the terminal and make sure that the current directory is `frontend`. You can then run `npm install` to install all the dependencies needed for the project (This has to be done only once).
+To install the project dependencies for the frontend, open the terminal and make sure the current directory is `src/main/frontend`. You can then run `npm install` to install all the dependencies needed for the project (This has to be done only once).
 
-To start the frontend server run `npm start` from the `frontend` directory. Make sure that database and backend server are also running so that the frontend can interact with the backend.  
+To start the frontend server run `npm start` from the `src/main/frontend` directory. Make sure database and backend server are also running so that the frontend can interact with the backend.  
 
 ## FAQ
 
 ### How to connect to running database from terminal
 
-Sometimes you might want to inspect the tables, run raw queries, seed the database, check that a certain backend action has been performed correctly. To do that you can simply run the following command
+Sometimes you might want to inspect the tables, run raw queries, seed the database, check a certain backend action has been performed correctly. To do that you can simply run the following command.
 
 `docker run -it --network host postgres:11-alpine psql -h localhost -U defever_user -p 5430 -W defever`
 
-Use the password specified in `docker-compose.yaml`.
+Use the password specified in `docker-compose.yaml`

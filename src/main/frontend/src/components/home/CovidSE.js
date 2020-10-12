@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import '../Components.css';
 
 import '../../App.css';
@@ -39,12 +39,12 @@ function CovidSE() {
   }, [key]);
 
   return (
-    <div className="App mb-5 pb-5">
-      <h1 className="bebas-font">Sweden COVID-19</h1>
+    <Fragment>
+      <h1 className="bebas-font text-center">Sweden COVID-19</h1>
       <SeStats stats={seStats} />
-      <SelectDataKey onChange={(e) => setKey(e.target.value)} />
+      <SelectDataKey className=" text-center" onChange={(e) => setKey(e.target.value)} />
       <RegionsChart data={regions} dataKey={key} className="" />
-    </div>
+    </Fragment>
   );
 }
 

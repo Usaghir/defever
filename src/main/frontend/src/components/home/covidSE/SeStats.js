@@ -9,7 +9,7 @@ function SeStats({ stats }) {
   const { cases, deaths, recovered, active, updated } = stats;
 
   return (
-    <div className="global-stats">
+    <div className="global-stats text-center mar-l-r">
       <small>Updated on {new Date(updated).toLocaleString()}</small>
       <table>
         <tbody>
@@ -21,8 +21,7 @@ function SeStats({ stats }) {
               Deaths: <Stat number={deaths} color="red" />
             </td>
             <td>
-              Recovered:{' '}
-              <Stat number={recovered ? recovered : 'N/A'} color="green" />
+              Recovered: <Stat number={recovered ? recovered : 'N/A'} color="green" />
             </td>
             <td>
               Active: <Stat number={active} color="orange" />

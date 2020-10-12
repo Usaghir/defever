@@ -17,10 +17,9 @@ class LoginPage extends Component {
     return (
       <div className="">
         <LoginNavbar />
-        <div className="container">
-          <div className="grid-container mt-4">
+        <div className="container mt-5">
+          <div className="grid-container mt-5">
             <LoginDescription text1="By Raja Umer" />
-
             <RegisterForm onSubmit={this.register} />
           </div>
         </div>

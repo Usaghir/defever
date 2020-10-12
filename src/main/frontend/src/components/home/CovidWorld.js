@@ -57,8 +57,8 @@ function CovidWorld() {
 
   return (
     <AppDispatch.Provider value={dispatch}>
-      <div className="App pb-3">
-        <h1 className="bebas-font">World COVID-19</h1>
+      <div className="mb-5 pb-5">
+        <h1 className="bebas-font text-center">World COVID-19</h1>
         <GlobalStats stats={globalStats} />
 
         <SelectDataKey />
@@ -66,16 +66,12 @@ function CovidWorld() {
         <CountriesChart data={countries} dataKey={key} />
 
         {country ? (
-          <div>
+          <div className="text-center">
             <h2 className="bebas-font">History for {country}</h2>
             <HistoryChartGroup history={history} lastDays={lastDays} />
           </div>
         ) : (
-          <small className="">
-            <p className="bebas-font">
-              Click on a country bar to show it's history
-            </p>
-          </small>
+          <p className="bebas-font text-center">Click on a country bar to see it's history</p>
         )}
       </div>
     </AppDispatch.Provider>
