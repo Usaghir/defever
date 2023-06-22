@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Import custom styles for our application
 import './App.css';
@@ -8,12 +8,12 @@ import Auth from './services/Auth';
 import Navbar from './components/layout/Navbar';
 
 // Import pages
-import LoginPage from './components/auth/LoginPage';
-import HomePage from './components/home/HomePage';
-import PostsPage from './components/posts/PostsPage';
-import ProfilePage from './components/profile/ProfilePage';
+import Home from './components/home/Home';
+import Covid from './components/covid/Covid';
+import Posts from './components/posts/Posts';
+import Profile from './components/profile/Profile';
 import Chat from './components/chat/Chat';
-import LoginFooter from './components/auth/LoginFooter';
+import Footer from './components/home/Footer';
 //import ChatApp from "./ChatApp";
 
 import UserApi from './api/UserApi';
@@ -25,37 +25,30 @@ function App() {
   UserApi.bindCurrentUserStateSetter(setUser);
 
   const loggedInRouter = (
-    <Router>
-      <Navbar onLogout={() => Auth.logout()} />
-
+    <div>
+     
       <div className="container mt-5">
-        <Switch>
-          <Route path="/posts">
-            <PostsPage />
-          </Route>
-          <Route path="/profile">
-            <ProfilePage user={user} />
-          </Route>
-
-          <Route path="/chat">
-            <Chat user={user} />
-          </Route>
-
-          <Route path="/">
-            <HomePage />
-          </Route>
-        </Switch>
+      
+        <Router>
+          <Navbar onLogout={() => Auth.logout()} />
+          <Routes>
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/profile" element={<Profile user={user} />} />
+            <Route path="/chat" element={<Chat user={user} />} />
+            <Route path="/" element={<Covid />} />
+          </Routes>
+        </Router>
       </div>
-      <LoginFooter />
-    </Router>
+      <Footer />
+    </div>
   );
 
   return loggedIn ? (
     loggedInRouter
   ) : (
     <div>
-      <LoginPage />
-      <LoginFooter />
+      <Home />
+      <Footer />
     </div>
   );
 }

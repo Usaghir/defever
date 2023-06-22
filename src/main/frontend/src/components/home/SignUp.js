@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Components.css';
 
-function RegisterForm({ onSubmit }) {
+function SignUp({ onSubmit }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,4 +66,4 @@ function RegisterForm({ onSubmit }) {
   );
 }
 
-export default RegisterForm;
+export default SignUp;

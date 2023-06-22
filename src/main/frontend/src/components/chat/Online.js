@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Chat.css';
 import '../Components.css';
-import { Avatar } from '@material-ui/core';
+import { FaBeer } from "react-icons/fa";
 //import { AccessAlarm, AccessibilityNewIcon } from '@material-ui/icons/AccessibilityNew';
 //import {  } from '@material-ui-icons';
 
@@ -28,7 +28,7 @@ class Online extends Component {
             <ul className="chat-header">
               {this.props.onlineUsers.map((use, index) => (
                 <li key={index} className="row shadow-lg p-3 mb-2 bg-light">
-                  <Avatar className="bg-success"></Avatar>
+                  <FaBeer className="bg-success"></FaBeer>
                   <h5>{use}</h5>
                 </li>
               ))}

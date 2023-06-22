@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import RegisterForm from './RegisterForm';
+import RegisterForm from './SignUp';
 import Auth from '../../services/Auth';
-import LoginNavbar from './LoginNavBar';
-import LoginDescription from './LoginDescription';
+import LoginNavbar from './NavBar';
+import LoginDescription from './Description';
 import '../Components.css';
 
-class LoginPage extends Component {
+class Home extends Component {
   async register(registrationData) {
     const registerSuccess = await Auth.register(registrationData);
     if (!registerSuccess) {
@@ -28,4 +28,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default Home;

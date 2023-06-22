@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CommentList from '../comments/CommentList';
-import { Avatar } from '@material-ui/core';
+import { FaBeer } from "react-icons/fa";
 import '../Components.css';
 
 function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
@@ -39,7 +39,7 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
         >
           <div className="row justify-content-between">
             <div className="row ml-4">
-              <Avatar className=" mt-4 bg-success"></Avatar>
+              <FaBeer className=" mt-4 bg-success"></FaBeer>
               <h3 className="mt-4 ml-2 font-weight-bold">{post.user.name}</h3>
             </div>
             <em

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Components.css';
 
-function LoginForm({ onSubmit }) {
+function Login({ onSubmit }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -49,4 +49,4 @@ function LoginForm({ onSubmit }) {
   );
 }
 
-export default LoginForm;
+export default Login;

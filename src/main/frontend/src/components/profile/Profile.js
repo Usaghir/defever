@@ -2,7 +2,7 @@ import React from 'react';
 import UserApi from '../../api/UserApi';
 import '../Components.css';
 
-class ProfilePage extends React.Component {
+class Profile extends React.Component {
   constructor(props) {
     super(props);
 
@@ -102,4 +102,4 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default ProfilePage;
+export default Profile;

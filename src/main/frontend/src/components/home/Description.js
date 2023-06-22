@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../Components.css';
 
-class LoginDescription extends Component {
+class Description extends Component {
   render() {
     return (
       <div className="card  mt-5  mb-5 text-dark rounded-0" style={{}}>
@@ -42,4 +42,4 @@ class LoginDescription extends Component {
   }
 }
 
-export default LoginDescription;
+export default Description;

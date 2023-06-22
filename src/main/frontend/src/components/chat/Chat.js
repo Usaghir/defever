@@ -6,7 +6,7 @@ import Online from './Online';
 import ChatRoom from './ChatRoom';
 import UserApi from '../../api/UserApi';
 import ChatApi from '../../api/ChatApi';
-import { Avatar } from '@material-ui/core';
+import { FaBeer } from "react-icons/fa";
 import '../Components.css';
 
 let stompClient = null;
@@ -145,7 +145,7 @@ class Chat extends Component {
                 className="row justify-content-between shadow-lg p-3 mb-2 bg-white   text-break"
               >
                 <div>
-                  <Avatar className="bg-primary"></Avatar>
+                  <FaBeer className="bg-primary"></FaBeer>
                   <h5 className="font-weight-bold">{mess}</h5>
                 </div>
                 <em className="mr-4 mt-2" style={{ color: '#3a3b3c', fontSize: '10px' }}>

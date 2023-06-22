@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class LoginFooter extends Component {
+export class Footer extends Component {
   render() {
     return (
       <footer className="page-footer font-small mt-5 bg-light w-100">
@@ -58,4 +58,4 @@ export class LoginFooter extends Component {
   }
 }
 
-export default LoginFooter;
+export default Footer;

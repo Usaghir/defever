@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CovidWorld from './CovidWorld';
 import CovidSE from './CovidSE';
-import './home.css';
+import './Covid.css';
 
 import { Tabs, Tab } from 'react-bootstrap';
 

@@ -1,10 +1,10 @@
 import React from "react";
-import PostsApi from "./../../api/PostsApi";
+import PostsApi from "../../api/PostsApi";
 import PostForm from "./PostForm";
 import PostCard from "./PostCard";
 import UserApi from "../../api/UserApi";
 
-class PostsPage extends React.Component {
+class Posts extends React.Component {
   constructor(props) {
     super(props);
 
@@ -88,4 +88,4 @@ class PostsPage extends React.Component {
   }
 }
 
-export default PostsPage;
+export default Posts;

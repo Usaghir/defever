@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './Login';
 import Logo from './logo.png';
 import Auth from '../../services/Auth';
 
-class LoginNavbar extends Component {
+class Navbar extends Component {
   async login(loginData) {
     const loginSuccess = await Auth.login(loginData);
     if (!loginSuccess) {
@@ -27,4 +27,4 @@ class LoginNavbar extends Component {
     );
   }
 }
-export default LoginNavbar;
+export default Navbar;
