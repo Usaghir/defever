@@ -5,19 +5,16 @@ import './Covid.css';
 
 import { Tabs, Tab } from 'react-bootstrap';
 
-class HomePage extends Component {
+class Covid extends Component {
   render() {
     return (
       <div className="bg-light">
         <Tabs
           variant="tab"
           className="pt-3 pb-3 justify-content-center myClass bebas-font"
-          defaultActiveKey="covidSE"
+          defaultActiveKey="covidWorld"
           id="uncontrolled-tab-example"
         >
-          <Tab eventKey="covidSE" title="Sweden">
-            <CovidSE />
-          </Tab>
           <Tab eventKey="covidWorld" title="World">
             <CovidWorld />
           </Tab>
@@ -27,4 +24,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default Covid;

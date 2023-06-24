@@ -35,7 +35,7 @@ function App() {
             <Route path="/posts" element={<Posts />} />
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/chat" element={<Chat user={user} />} />
-            <Route path="/" element={<Covid />} />
+            <Route path="/covid" element={<Covid />} />            
           </Routes>
         </Router>
       </div>
