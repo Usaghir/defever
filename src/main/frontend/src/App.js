@@ -26,19 +26,19 @@ function App() {
 
   const loggedInRouter = (
     <div>
-     
-      <div className="container mt-5">
       
         <Router>
+        <div className="container mt-5">
           <Navbar onLogout={() => Auth.logout()} />
           <Routes>
             <Route path="/posts" element={<Posts />} />
             <Route path="/profile" element={<Profile user={user} />} />
             <Route path="/chat" element={<Chat user={user} />} />
-            <Route path="/covid" element={<Covid />} />            
+            <Route path="/" element={<Covid />} />
           </Routes>
+          </div>
         </Router>
-      </div>
+      
       <Footer />
     </div>
   );
@@ -47,8 +47,7 @@ function App() {
     loggedInRouter
   ) : (
     <div>
-      <Home />
-      <Footer />
+      <Home/>
     </div>
   );
 }

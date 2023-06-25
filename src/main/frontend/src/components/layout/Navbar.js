@@ -24,7 +24,7 @@ class Navbar extends React.Component {
         <div className="collapse container ml-5 navbar-collapse " id="navbarColor01">
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item">
-              <Link to="/">
+              <Link to="/home">
                 <img className="navbar-brand" src={Logo} alt="#" style={{ width: 80 }} />
               </Link>
             </li>
