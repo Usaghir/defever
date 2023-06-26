@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from './Login';
+import Login from '../home/Login';
 import Logo from './logo.png';
 import Auth from '../../services/Auth';
 
@@ -12,15 +12,10 @@ class LoginNavbar extends Component {
   }
   render() {
     return (
-      <nav className="Loginnavbar Loginnavbar-expand-lg  justify-content-around bg-light">
-        <img
-          className="Loginnavbar-brand"
-          src={Logo}
-          alt="#"
-          style={{ width: 80 }}
-        />
+      <nav className="navbar navbar-expand-lg  justify-content-around bg-light">
+        <img className="navbar-brand" src={Logo} alt="#" style={{ width: 80 }} />
 
-        <div className=" ml-5" id="LoginnavbarColor01 ">
+        <div className=" ml-5" id="navbarColor01 ">
           <Login onSubmit={this.login} />
         </div>
       </nav>

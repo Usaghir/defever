@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import './Chat.css';
 import '../Components.css';
-import { FaBeer } from "react-icons/fa";
-//import { AccessAlarm, AccessibilityNewIcon } from '@material-ui/icons/AccessibilityNew';
-//import {  } from '@material-ui-icons';
-
-// <Avatar className="bg-primary" >H</Avatar>
-//       <Avatar >N</Avatar>
-//       <Avatar >OP</Avatar>
-//<i class="far fa-meh"></i>
+import { FaUser } from 'react-icons/fa';
 
 class Online extends Component {
   render() {
@@ -28,7 +21,7 @@ class Online extends Component {
             <ul className="chat-header">
               {this.props.onlineUsers.map((use, index) => (
                 <li key={index} className="row shadow-lg p-3 mb-2 bg-light">
-                  <FaBeer className="bg-success"></FaBeer>
+                  <FaUser size={50}></FaUser>
                   <h5>{use}</h5>
                 </li>
               ))}

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import SignUp from './SignUp';
 import Auth from '../../services/Auth';
-import LoginNavBar from './LoginNavBar';
 import Description from './Description';
 import '../Components.css';
-import Footer from './Footer';
+import LoginNavbar from './LoginNavBar';
+
 
 class Home extends Component {
   async register(registrationData) {
@@ -17,14 +17,14 @@ class Home extends Component {
   render() {
     return (
       <div className="">
-        <LoginNavBar />
+      <LoginNavbar/>
         <div className="container mt-5">
           <div className="grid-container mt-5">
             <Description text1="By Raja Umer" />
             <SignUp onSubmit={this.register} />
           </div>
         </div>
-        <Footer />
+       
       </div>
     );
   }

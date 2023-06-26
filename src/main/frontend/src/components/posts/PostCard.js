@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import CommentList from '../comments/CommentList';
-import { FaBeer } from "react-icons/fa";
+import { FaUser } from 'react-icons/fa';
 import '../Components.css';
 
 function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
@@ -39,13 +39,12 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
         >
           <div className="row justify-content-between">
             <div className="row ml-4">
-              <FaBeer className=" mt-4 bg-success"></FaBeer>
+              <span >
+                <FaUser size={50}></FaUser>
+              </span>
               <h3 className="mt-4 ml-2 font-weight-bold">{post.user.name}</h3>
             </div>
-            <em
-              className="mr-4 mt-2"
-              style={{ color: '#3a3b3c', fontSize: '10px' }}
-            >
+            <em className="mr-4 mt-2" style={{ color: '#3a3b3c', fontSize: '10px' }}>
               {post.date.toString()}
             </em>
           </div>
@@ -62,9 +61,7 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
           onClick={incrementLikes}
           id="post-like"
         >
-          {post.likes.some((like) => like.id === currentUser.id)
-            ? 'Unlike'
-            : 'Like'}{' '}
+          {post.likes.some((like) => like.id === currentUser.id) ? 'Unlike' : 'Like'}{' '}
         </button>
         {currentUser.id === post.user.id ? (
           <button
