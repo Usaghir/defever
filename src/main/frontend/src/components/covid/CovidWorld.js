@@ -1,4 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
+import { Link } from 'react-router-dom'
+
+
 import '../Components.css';
 
 import '../../App.css';
@@ -10,7 +13,7 @@ import HistoryChartGroup from './covidWorld/HistoryChartGroup';
 
 const initialState = {
   key: 'cases',
-  country: null,
+  country: '',
   lastDays: {
     cases: 30,
     deaths: 30,
@@ -36,7 +39,7 @@ function reducer(state, action) {
 
 export const AppDispatch = React.createContext(null);
 
-function CovidWorld() {
+function CovidWorld() {git 
   const [state, dispatch] = useReducer(reducer, initialState);
   const { key, country, lastDays } = state;
 
@@ -47,7 +50,7 @@ function CovidWorld() {
 
   const countries = useCoronaAPI(`/countries?sort=${key}`, {
     initialData: [],
-    converter: (data) => data.slice(0, 21),
+    converter: (data) => data.slice(0, 15),
   });
 
   const history = useCoronaAPI(`/historical/${country}`, {
@@ -58,14 +61,16 @@ function CovidWorld() {
   return (
     <AppDispatch.Provider value={dispatch}>
       <div className="mb-5 pb-5">
-        <h1 className="bebas-font text-center">World COVID-19</h1>
+
+        <h2 className="bebas-font text-center">
+          World COVID-19
+        </h2>
         <GlobalStats stats={globalStats} />
 
         <SelectDataKey />
 
         <CountriesChart data={countries} dataKey={key} />
-
-        {country ? (
+        { country ? (
           <div className="text-center">
             <h2 className="bebas-font">History for {country}</h2>
             <HistoryChartGroup history={history} lastDays={lastDays} />

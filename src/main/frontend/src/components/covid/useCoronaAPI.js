@@ -4,16 +4,21 @@ const BASE_URL = "https://corona.lmao.ninja/v2";
 
 export function useCoronaAPI(
   path,
-  { initialData = null, converter = (data) => data, refetchInterval = null }
+  { initialData = {}, converter = (data) => data, refetchInterval = null }
 ) {
   const [data, setData] = useState(initialData);
   const convertData = useCallback(converter, []);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${BASE_URL}${path}`);
-      const data = await response.json();
-      setData(convertData(data));
+      try {
+        const response = await fetch(`${BASE_URL}${path}`);
+        const data = await response.json();
+        console.log(data);
+        setData(convertData(data));
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchData();
 

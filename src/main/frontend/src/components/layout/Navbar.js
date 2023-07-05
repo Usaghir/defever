@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './logo.png';
 import UserApi from '../../api/UserApi';
+import { FaUser } from 'react-icons/fa';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -70,12 +71,9 @@ class Navbar extends React.Component {
             </li>
             <li className="nav-item mt-3">
               <Link to="/profile">
-                <img
-                  className="navbar-brand"
-                  src="/avatars/manager.png"
-                  style={{ width: '40px', height: '40px' }}
-                  alt="User Avatar"
-                />
+              <span >
+                <FaUser size={30}></FaUser>
+              </span>
                 <div className="middle"></div>
               </Link>
             </li>
