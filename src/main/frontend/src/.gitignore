@@ -40,6 +40,7 @@ out/
 
 build
 out
+.env
 
 .DS_Store
 node_modules/

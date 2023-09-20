@@ -1,33 +1,36 @@
-import React, { Component } from 'react';
-import SignUp from './SignUp';
-import Auth from '../../services/Auth';
-import Description from './Description';
-import '../Components.css';
-import LoginNavbar from './LoginNavBar';
+import React, { useState } from "react";
+import SignUp from "./signUp/SignUp";
+import Auth from "../../services/Auth";
+import Image from "./Image";
+import SignIn from "./signIn/SignIn";
 
+function Home() {
+  const [registerSuccess, setRegisterSuccess] = useState(null);
 
-class Home extends Component {
-  async register(registrationData) {
-    const registerSuccess = await Auth.register(registrationData);
-    if (!registerSuccess) {
-      alert("Couldn't register check credentials and try again");
-    }
+  async function register(registrationData) {
+    const success = await Auth.register(registrationData);
+    setRegisterSuccess(success);
   }
 
-  render() {
-    return (
-      <div className="">
-      <LoginNavbar/>
-        <div className="container mt-5">
-          <div className="grid-container mt-5">
-            <Description text1="By Raja Umer" />
-            <SignUp onSubmit={this.register} />
-          </div>
+  return (
+    <div className="container-fluid w-75">
+      <div className="row justify-content-center align-items-center min-vh-100">
+        <div className="col-md-6">
+          <Image />
         </div>
-       
+        <div className="col-md-4">
+          <SignIn />
+          <SignUp onSubmit={register} />
+          {registerSuccess === false && (
+            <div className="alert custom-alert-danger mt-3">
+              <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
+              Couldn't register. Check credentials and try again.
+            </div>
+          )}
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Home;

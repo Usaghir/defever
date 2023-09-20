@@ -1,5 +1,5 @@
 .bebas-font {
-  font-family: 'Bebas Neue', cursive;
+  font-family: "Bebas Neue", cursive;
   letter-spacing: 1.6px;
 }
 
@@ -26,6 +26,10 @@
   display: grid;
   justify-content: end;
 }
+.footer {
+  position: relative;
+  bottom: 0;
+}
 
 .chart-container {
   position: relative;
@@ -39,8 +43,19 @@
   justify-content: flex-start;
   margin: auto;
 }
+.center-vertically {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-@media (max-width:850px) {
+button {
+  font-family: "Bebas Neue", cursive;
+  letter-spacing: 1.6px;
+}
+
+@media (max-width: 850px) {
   .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
@@ -60,5 +75,20 @@
   .mar-l-r {
     margin-right: 10px;
     margin-left: 10px;
+  }
+
+  .imagesize {
+    width: 85%;
+  }
+}
+
+@media (min-width: 786px) {
+  .footer {
+    position: absolute;
+    bottom: 0;
+    margin-top: auto;
+  }
+  .height-s {
+    height: 100%;
   }
 }
