@@ -1,15 +1,15 @@
-import React, { useReducer, useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useReducer, useState } from "react";
+import { Link } from "react-router-dom";
 
-import GlobalStats from './covidWorld/GlobalStats';
-import CountriesChart from './covidWorld/CountriesChart';
-import SelectDataKey from './covidWorld/SelectDataKey';
-import { useCoronaAPI } from './useCoronaAPI';
-import HistoryChartGroup from './covidWorld/HistoryChartGroup';
+import GlobalStats from "./GlobalStats";
+import CountriesChart from "./CountriesChart";
+import SelectDataKey from "./SelectDataKey";
+import { useCoronaAPI } from "../useCoronaAPI";
+import HistoryChartGroup from "./HistoryChartGroup";
 
 const initialState = {
-  key: 'cases',
-  country: '',
+  key: "cases",
+  country: "",
   lastDays: {
     cases: 30,
     deaths: 30,
@@ -19,11 +19,11 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'SET_KEY':
+    case "SET_KEY":
       return { ...state, key: action.key };
-    case 'SET_COUNTRY':
+    case "SET_COUNTRY":
       return { ...state, country: action.country };
-    case 'SET_LASTDAYS':
+    case "SET_LASTDAYS":
       return {
         ...state,
         lastDays: { ...state.lastDays, [action.key]: action.days },
@@ -39,7 +39,7 @@ function CovidWorld() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { key, country, lastDays } = state;
 
-  const globalStats = useCoronaAPI('/all', {
+  const globalStats = useCoronaAPI("/all", {
     initialData: {},
     refetchInterval: 10000,
   });
@@ -56,23 +56,22 @@ function CovidWorld() {
 
   return (
     <AppDispatch.Provider value={dispatch}>
-      <div className="mb-5 pb-5">
-
-        <h2 className="bebas-font text-center">
-          World COVID-19
-        </h2>
+      <div className=" ">
+        <h2 className="bebas-font text-center">COVID-19</h2>
         <GlobalStats stats={globalStats} />
 
         <SelectDataKey />
 
         <CountriesChart data={countries} dataKey={key} />
-        { country ? (
-          <div className="text-center">
-            <h2 className="bebas-font">History for {country}</h2>
+        {country ? (
+          <div className="text-center ">
+            <h2 className="bebas-font py-4 my-4">History for {country}</h2>
             <HistoryChartGroup history={history} lastDays={lastDays} />
           </div>
         ) : (
-          <p className="bebas-font text-center">Click on a country bar to see it's history</p>
+          <p className="bebas-font text-center mt-4 pb-4">
+            Click on a country bar to see it's history
+          </p>
         )}
       </div>
     </AppDispatch.Provider>

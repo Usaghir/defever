@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Home.css";
+import "../Landing.css";
 
 function LoginForm({ onSubmit }) {
   const [email, setEmail] = useState("");
@@ -108,7 +108,7 @@ function LoginForm({ onSubmit }) {
 
         <div className="form-group text-center">
           <button
-            className="btn btn-primary border-0 rounded-pill w-100"
+            className="btn btn-primary border-0 rounded-pill w-50"
             style={{
               backgroundColor: "#ff2f4f",
               fontFamily: "Bebas Neue",
@@ -116,7 +116,7 @@ function LoginForm({ onSubmit }) {
             }}
             onClick={handleFormSubmit}
           >
-            Login
+            Sign In
           </button>
         </div>
       </div>

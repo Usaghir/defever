@@ -6,7 +6,7 @@ class Image extends Component {
     return (
       <div>
         
-          <img className="imagesize " src={Logo} alt="#" />
+          <img className="image-small " src={Logo} alt="#" />
        
       </div>
     );

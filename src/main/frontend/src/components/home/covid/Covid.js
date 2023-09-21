@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import CovidWorld from './CovidWorld';
-import CovidSE from './CovidSE';
-import './Covid.css';
+import React, { Component } from "react";
+import CovidWorld from "./covidWorld/CovidWorld";
+import CovidSE from "./covidSE/CovidSE";
+import "./Covid.css";
 
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab } from "react-bootstrap";
 
 class Covid extends Component {
   render() {
     return (
-      <div className="bg-light mb-4">
+      <div className="bg-light  ">
         <Tabs
           variant="tab"
           className="pt-3 pb-3 justify-content-center myClass bebas-font"
           defaultActiveKey="covidWorld"
           id="uncontrolled-tab-example"
         >
-          <Tab eventKey="covidWorld" title="World">
+          <Tab eventKey="covidWorld" title="">
             <CovidWorld />
           </Tab>
         </Tabs>

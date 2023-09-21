@@ -5,15 +5,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Auth from "./services/Auth";
-import Navbar from "./components/dashboard/navBar/Navbar";
-import Footer from "./components/home/Footer";
+import Navbar from "./components/home/navBar/Navbar";
+import Footer from "./components/landing/Footer";
 
 // Import pages
-import Home from "./components/home/Home";
-import Covid from "./components/dashboard/covid/Covid";
-import Posts from "./components/dashboard/posts/Posts";
-import Profile from "./components/dashboard/profile/Profile";
-import Chat from "./components/dashboard/chat/Chat";
+import Landing from "./components/landing/Landing";
+import Covid from "./components/home/covid/Covid";
+import Posts from "./components/home/posts/Posts";
+import Profile from "./components/home/profile/Profile";
+import Chat from "./components/home/chat/Chat";
 //import ChatApp from "./ChatApp";
 
 import UserApi from "./api/UserApi";
@@ -34,7 +34,6 @@ function App() {
               <Route path="/posts" element={<Posts />} />
               <Route path="/profile" element={<Profile user={user} />} />
               <Route path="/chat" element={<Chat user={user} />} />
-              <Route path="/covid" element={<Covid />} />
               <Route path="/" element={<Covid />} />
             </Routes>
           </div>
@@ -43,7 +42,7 @@ function App() {
     </div>
   );
 
-  return loggedIn ? loggedInRouter : <Home />;
+  return loggedIn ? loggedInRouter : <Landing />;
 }
 
 export default App;

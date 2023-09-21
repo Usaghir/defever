@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 import {
   AreaChart,
   CartesianGrid,
@@ -8,12 +7,12 @@ import {
   Tooltip,
   Area,
   ResponsiveContainer,
-} from 'recharts';
+} from "recharts";
 
 const TITLE2COLOR = {
-  Cases: '#4A4A4A',
-  Deaths: '#D0021B',
-  Recovered: '#09C79C',
+  Cases: "#4A4A4A",
+  Deaths: "#D0021B",
+  Recovered: "#09C79C",
 };
 
 function HistoryChart({ title, data, lastDays, onLastDaysChange }) {
@@ -22,7 +21,8 @@ function HistoryChart({ title, data, lastDays, onLastDaysChange }) {
 
   return (
     <div className="">
-      <ResponsiveContainer width="100%" height={150}>
+      <ResponsiveContainer width="90%" height={150}>
+        {/* Adjust the width percentage as needed */}
         <AreaChart
           data={data.slice(-lastDays)}
           margin={{ top: 10, right: 30, left: 10, bottom: 0 }}
@@ -34,7 +34,9 @@ function HistoryChart({ title, data, lastDays, onLastDaysChange }) {
             </linearGradient>
           </defs>
           <XAxis dataKey="time" />
-          <YAxis />
+          <YAxis
+            tick={{ fontSize: 10 }} 
+          />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Area

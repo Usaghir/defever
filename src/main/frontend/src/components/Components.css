@@ -77,9 +77,7 @@ button {
     margin-left: 10px;
   }
 
-  .imagesize {
-    width: 85%;
-  }
+  
 }
 
 @media (min-width: 786px) {

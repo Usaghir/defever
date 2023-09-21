@@ -4,7 +4,7 @@ import Auth from "../../services/Auth";
 import Image from "./Image";
 import SignIn from "./signIn/SignIn";
 
-function Home() {
+function Landing() {
   const [registerSuccess, setRegisterSuccess] = useState(null);
 
   async function register(registrationData) {
@@ -20,6 +20,7 @@ function Home() {
         </div>
         <div className="col-md-4">
           <SignIn />
+          <br />
           <SignUp onSubmit={register} />
           {registerSuccess === false && (
             <div className="alert custom-alert-danger mt-3">
@@ -33,4 +34,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Landing;

@@ -20,7 +20,7 @@ function Navbar(props) {
       <div className="container-fluid px-0  w-75">
         <nav className="navbar navbar-expand-lg  ">
           <Link to="/" className="navbar-brand">
-            <img src={Logo} alt="#" style={{ width: "80px" }} />
+            <img src={Logo} alt="#" style={{ width: "50px" }} />
           </Link>
 
           <button
@@ -39,7 +39,7 @@ function Navbar(props) {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link
-                  to="/covid"
+                  to="/"
                   className="nav-link text-uppercase  link-style"
                 >
                   Home

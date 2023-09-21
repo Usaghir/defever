@@ -1,11 +1,11 @@
 body {
   min-height: 100vh;
-
+  background: linear-gradient(to right bottom, #0c2c54, #ffffff);
   font-family: "Montserrat", sans-serif !important;
 }
 
 .bg-home {
-  background: linear-gradient(to right, #0c2c54, #6c849c);
+  
   
 }
 .App {

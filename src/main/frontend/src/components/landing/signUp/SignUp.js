@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Home.css";
+import "../Landing.css";
 
 function SignUp({ onSubmit }) {
   const [name, setName] = useState("");
@@ -98,7 +98,7 @@ function SignUp({ onSubmit }) {
   };
 
   return (
-    <div className="card border-0">
+    <div className="card border-0 shadow-lg signUp">
       <div className="card-body ">
         <div>
           <div className="form-group">
@@ -169,7 +169,7 @@ function SignUp({ onSubmit }) {
 
           <div className="form-group text-center">
             <button
-              className="btn btn-primary border-0 rounded-pill w-100"
+              className="btn btn-primary border-0 rounded-pill w-50"
               onClick={handleFormSubmit}
               style={{
                 backgroundColor: "#ff2f4f",
