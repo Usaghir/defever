@@ -1,9 +1,4 @@
-input::placeholder {
-  color: #c1c6ca !important;
-}
-input {
-  font-weight: bolder !important;
-}
+
 
 @media (max-width: 786px) {
   .image-small {

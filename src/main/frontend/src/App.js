@@ -14,6 +14,7 @@ import Covid from "./components/home/covid/Covid";
 import Posts from "./components/home/posts/Posts";
 import Profile from "./components/home/profile/Profile";
 import Chat from "./components/home/chat/Chat";
+import News from "./components/home/news/News";
 //import ChatApp from "./ChatApp";
 
 import UserApi from "./api/UserApi";
@@ -34,7 +35,9 @@ function App() {
               <Route path="/posts" element={<Posts />} />
               <Route path="/profile" element={<Profile user={user} />} />
               <Route path="/chat" element={<Chat user={user} />} />
+              <Route path="/news" element={<News />} />
               <Route path="/" element={<Covid />} />
+              
             </Routes>
           </div>
         </Router>

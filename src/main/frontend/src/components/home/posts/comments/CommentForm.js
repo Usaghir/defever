@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { BsSendFill } from "react-icons/bs";
 
 function CommentForm({ onSubmit }) {
-  const [body, setBody] = React.useState('');
+  const [body, setBody] = useState("");
+  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [buttonColor, setButtonColor] = useState("#CCCCCC");
+
+  const handleBodyChange = (e) => {
+    const inputValue = e.target.value;
+    setBody(inputValue);
+    setIsButtonActive(!!inputValue); // Set to true if there is input, otherwise false
+  };
 
   const handleSubmit = () => {
-    // Invoke the passed in event callback
-    onSubmit(
-      body === '' ? alert('Empty comments not allowed!') : { body: body }
-    );
+    if (body === "") {
+      alert("Empty comments not allowed!");
+    } else {
+      onSubmit({ body });
+      setBody("");
+      setIsButtonActive(false); // Reset button to inactive state
+      setButtonColor("#CCCCCC"); // Reset button color
+    }
+  };
 
-    setBody('');
+  useEffect(() => {
+    // Use effect to monitor the body state
+    if (body === "") {
+      setButtonColor("#CCCCCC");
+    } else {
+      setButtonColor("#ff2f4f");
+    }
+  }, [body]);
+
+  const buttonStyles = {
+    fontSize: "28px",
+    color: buttonColor,
+    backgroundColor: "transparent",
   };
 
   return (
@@ -21,19 +47,18 @@ function CommentForm({ onSubmit }) {
               className="form-control rounded-0"
               placeholder="Write your comment"
               value={body}
-              onChange={(e) => setBody(e.target.value)}
+              onChange={handleBodyChange}
             />
           </div>
 
           <div className="form-group">
             <button
-              className="btn btn-primary btn-sm rounded-0 border-0"
+              className={`border-0 bebas-font ${isButtonActive ? "active" : ""}`}
               onClick={handleSubmit}
-              style={{
-                backgroundColor: '#0C2C54',
-              }}
+              style={buttonStyles}
+              disabled={!isButtonActive}
             >
-              Comment
+              <BsSendFill />
             </button>
           </div>
         </div>

@@ -1,46 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { BsSendFill } from "react-icons/bs";
 
 function PostForm({ onSubmit }) {
-  const [body, setBody] = React.useState('');
+  const [body, setBody] = useState("");
+  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [buttonColor, setButtonColor] = useState("#CCCCCC");
+
+  const handleBodyChange = (e) => {
+    const inputValue = e.target.value;
+    setBody(inputValue);
+    setIsButtonActive(!!inputValue); // Set to true if there is input, otherwise false
+  };
 
   const handleSubmit = () => {
-    // Invoke the passed in event callback
-    onSubmit(body === '' ? alert('Empty posts not allowed!') : { body: body });
+    if (body === "") {
+      alert("Empty posts not allowed!");
+    } else {
+      onSubmit({ body });
+      setBody("");
+      setIsButtonActive(false); // Reset button to inactive state
+      setButtonColor("#CCCCCC"); // Reset button color
+    }
+  };
 
-    // Clear the input field
-    setBody('');
+  useEffect(() => {
+    // Use effect to monitor the body state
+    if (body === "") {
+      setButtonColor("#CCCCCC");
+    } else {
+      setButtonColor("#ff2f4f");
+    }
+  }, [body]);
+
+  const buttonStyles = {
+    fontSize: "28px",
+    color: buttonColor,
+    backgroundColor: "transparent",
   };
 
   return (
-    <div className="card rounded-0">
+    <div className="card shadow-lg">
       <div className="card-body">
-        <h1
-          className="card-title bebas-font pl-5"
-          style={{
-            backgroundColor: '#0C2C54',
-            color: 'white',
-          }}
-        >
+        <h1 className="card bebas-font text-white background-blue pl-3 pt-2 pb-2">
           Create Post
         </h1>
         <div>
-          <div className="form-group">
+          <div className="form-group mt-3">
             <textarea
-              className="form-control rounded-0"
+              className="form-control"
               value={body}
-              onChange={(e) => setBody(e.target.value)}
+              onChange={handleBodyChange}
+              placeholder="Can write here"
+              rows="4"
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group mt-3">
             <button
-              className="btn btn-primary btn-sm rounded-0 bebas-font border-0"
+              className={`border-0 bebas-font ${isButtonActive ? "active" : ""}`}
               onClick={handleSubmit}
-              style={{
-                backgroundColor: '#0C2C54',
-              }}
+              style={buttonStyles}
+              disabled={!isButtonActive}
             >
-              Post
+              <BsSendFill />
             </button>
           </div>
         </div>

@@ -1,42 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PostsApi from "../../../api/PostsApi";
 import PostForm from "./PostForm";
 import PostCard from "./PostCard";
 import UserApi from "../../../api/UserApi";
 
-class Posts extends React.Component {
-  constructor(props) {
-    super(props);
+function Posts() {
+  const [user, setUser] = useState({});
+  const [posts, setPosts] = useState([]);
 
-    this.state = {
-      user: {},
-      posts: [],
-    };
-  }
-
-  async createPost(postData) {
-    if (postData !== undefined) {
+  useEffect(() => {
+    async function fetchData() {
       try {
-        const user = this.state.user;
-        const response = await PostsApi.createPost({
-          body: postData.body,
-          date: new Date().toLocaleString(),
-          likes: [],
-          user,
-        });
-        const post = response.data;
-        const newPosts = this.state.posts.concat(post);
-
-        this.setState({
-          posts: newPosts,
-        });
-      } catch (e) {
-        console.error(e);
+        const [userData, postData] = await Promise.all([
+          UserApi.current(),
+          PostsApi.getAllPosts(),
+        ]);
+        setUser(userData.data);
+        setPosts(postData.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     }
-  }
 
-  async updatePost(newPostData) {
+    fetchData();
+  }, []);
+
+  const createPost = async (postData) => {
+    if (!postData) return;
+
+    try {
+      const response = await PostsApi.createPost({
+        body: postData.body,
+        date: new Date().toLocaleString(),
+        likes: [],
+        user,
+      });
+      const post = response.data;
+      setPosts((prevPosts) => [post, ...prevPosts]);
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
+  const updatePost = async (newPostData) => {
     try {
       await PostsApi.updatePost({
         id: newPostData.id,
@@ -45,57 +51,45 @@ class Posts extends React.Component {
         likes: newPostData.likes,
         user: newPostData.user,
       });
-    } catch (e) {
-      console.error(e);
+    } catch (error) {
+      console.error("Error updating post:", error);
     }
-  }
+  };
 
-  async deletePost(post) {
+  const deletePost = async (postToDelete) => {
     try {
-      await PostsApi.deletePost(post.id);
-      const newPosts = this.state.posts.filter((p) => p.id !== post.id);
-      this.setState({
-        posts: newPosts,
-      });
-    } catch (e) {
-      console.error(e);
+      await PostsApi.deletePost(postToDelete.id);
+      setPosts((prevPosts) =>
+        prevPosts.filter((post) => post.id !== postToDelete.id)
+      );
+    } catch (error) {
+      console.error("Error deleting post:", error);
     }
-  }
+  };
 
-  componentDidMount() {
-    PostsApi.getAllPosts()
-      .then(({ data }) => this.setState({ posts: data }))
-      .catch((err) => console.error(err));
-    UserApi.current()
-      .then(({ data }) => this.setState({ user: data }))
-      .catch((err) => console.error(err));
-  }
+  const sortedPosts = [...posts].sort((post1, post2) =>
+    post1.likes <= post2.likes ? 1 : -1
+  );
 
-  render() {
-    const posts = this.state.posts.sort((post1, post2) =>
-      post1.likes <= post2.likes ? 1 : -1
-    );
+  return (
+    <div className=" shadow-lg   rounded mb-4">
+      <PostForm
+        className="card"
+        onSubmit={(postData) => createPost(postData)}
+      />
 
-    return (
-      <div className=" shadow-lg   rounded">
-        <PostForm
+      {sortedPosts.map((post) => (
+        <PostCard
           className="card m-5"
-          onSubmit={(postData) => this.createPost(postData)}
+          key={post.id}
+          currentUser={user}
+          post={post}
+          onLikeClick={(newPostData) => updatePost(newPostData)}
+          onDeleteClick={() => deletePost(post)}
         />
-
-        {posts.map((post) => (
-          <PostCard
-            className="card m-5"
-            key={post.id}
-            currentUser={this.state.user}
-            post={post}
-            onLikeClick={(newPostData) => this.updatePost(newPostData)}
-            onDeleteClick={() => this.deletePost(post)}
-          />
-        ))}
-      </div>
-    );
-  }
+      ))}
+    </div>
+  );
 }
 
 export default Posts;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../../assets/logo.png";
 import UserApi from "../../../api/UserApi";
-import { FaUser } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import "./NavBar.css";
 
 function Navbar(props) {
@@ -38,14 +38,21 @@ function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link
-                  to="/"
-                  className="nav-link text-uppercase  link-style"
-                >
+                <Link to="/" className="nav-link text-uppercase  link-style  ">
                   Home
                 </Link>
               </li>
-
+              <li className="nav-item">
+                <Link
+                  to="/news"
+                  className="nav-link  text-uppercase link-style"
+                  style={{
+                    color: "#0C2C54",
+                  }}
+                >
+                  News
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link
                   to="/posts"
@@ -70,25 +77,26 @@ function Navbar(props) {
                 </Link>
               </li>
             </ul>
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav ">
               <li className="nav-item">
                 <Link to="/profile" className="nav-link">
-                  <span className="">
-                    <FaUser size={30}></FaUser>
+                  <span className="color-red">
+                    <FaUserCircle size={50}></FaUserCircle>
                   </span>
                 </Link>
               </li>
-              <li className="nav-item link-style mt-2 mr-4 text-uppercase">
+              <li className="nav-item link-style text-uppercase r-margin-b r-margin-name r-margin-y">
                 {user.name}
               </li>
-              <li className="nav-item">
+              <li className="nav-item r-margin-b">
                 <button
-                  className="btn btn-primary border-0 rounded-pill "
-                  style={{
-                    backgroundColor: "#ff2f4f",
-                    fontFamily: "Bebas Neue",
-                    letterSpacing: "1.6px",
-                  }}
+                  className="btn  border-0 rounded-pill  bebas-font app-buttons r-margin-logout "
+                  onMouseOver={(e) =>
+                    (e.target.style.backgroundColor = "#0C2C54")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.target.style.backgroundColor = "#ff2f4f")
+                  }
                   onClick={props.onLogout}
                 >
                   Logout

@@ -4,10 +4,44 @@ body {
   font-family: "Montserrat", sans-serif !important;
 }
 
-.bg-home {
-  
-  
+.bebas-font {
+  font-family: "Bebas Neue" !important;
+  letter-spacing: 1.6px;
+  font-weight: 900;
 }
+
+.app-buttons {
+  background-color: #ff2f4f !important ;
+  color: white !important;
+}
+
+.background-blue {
+  background: #0c2c54 !important;
+}
+
+.background-red {
+  background-color: #ff2f4f !important ;
+}
+.color-blue {
+  color: #0c2c54 !important;
+}
+.color-red {
+  color: #ff2f4f !important ;
+}
+
+
+
+textarea::placeholder {
+  color: #c1c6ca !important;
+}
+
+input::placeholder {
+  color: #c1c6ca !important;
+}
+input {
+  font-weight: bolder !important;
+}
+
 .App {
   text-align: center;
 }

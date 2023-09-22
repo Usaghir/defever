@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../Landing.css";
 
 function SignUp({ onSubmit }) {
   const [name, setName] = useState("");
@@ -42,7 +41,7 @@ function SignUp({ onSubmit }) {
 
   const validatePassword = (value) => {
     const minLength = 6;
-    const maxLength = 12;
+    const maxLength = 15;
 
     if (!value) {
       return "Password is required";
@@ -169,13 +168,10 @@ function SignUp({ onSubmit }) {
 
           <div className="form-group text-center">
             <button
-              className="btn btn-primary border-0 rounded-pill w-50"
+              className="btn  border-0 rounded-pill w-50 bebas-font app-buttons"
               onClick={handleFormSubmit}
-              style={{
-                backgroundColor: "#ff2f4f",
-                fontFamily: "Bebas Neue",
-                letterSpacing: "1.6px",
-              }}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#0C2C54")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "#ff2f4f")}
             >
               Sign up
             </button>

@@ -202,18 +202,21 @@ function Profile({ user }) {
 
             <div className="form-group text-center">
               <button
-                className="btn btn-primary border-0 rounded-pill w-25"
+                className="btn  border-0 rounded-pill w-50 bebas-font app-buttons"
                 onClick={handleFormSubmit}
-                style={{
-                  backgroundColor: "#ff2f4f",
-                  fontFamily: "Bebas Neue",
-                  letterSpacing: "1.6px",
-                }}
+                onMouseOver={(e) =>
+                  (e.target.style.backgroundColor = "#0C2C54")
+                }
+                onMouseLeave={(e) =>
+                  (e.target.style.backgroundColor = "#ff2f4f")
+                }
               >
-                Submit
+                Sign In
               </button>
               {successMessage && (
-                <div className="message-success small mt-2">{successMessage}</div>
+                <div className="message-success small mt-2">
+                  {successMessage}
+                </div>
               )}
             </div>
           </div>

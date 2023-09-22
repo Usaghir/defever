@@ -8,7 +8,7 @@ function LoginForm({ onSubmit }) {
 
   const validateEmail = (value) => {
     const minLength = 5; // Adjust as needed
-    const maxLength = 100; // Adjust as needed
+    const maxLength = 25; // Adjust as needed
 
     if (!value) {
       return "Email is required";
@@ -23,7 +23,7 @@ function LoginForm({ onSubmit }) {
 
   const validatePassword = (value) => {
     const minLength = 6; // Adjust as needed
-    const maxLength = 30; // Adjust as needed
+    const maxLength = 15; // Adjust as needed
 
     if (!value) {
       return "Password is required";
@@ -81,10 +81,13 @@ function LoginForm({ onSubmit }) {
             onChange={(e) => handleEmailChange(e.target.value)}
           />
           {errors.email && (
-            <div className="text-danger small"><i
-            className="fa fa-exclamation-circle mr-1"
-            aria-hidden="true"
-          ></i>{errors.email}</div>
+            <div className="text-danger small">
+              <i
+                className="fa fa-exclamation-circle mr-1"
+                aria-hidden="true"
+              ></i>
+              {errors.email}
+            </div>
           )}
         </div>
 
@@ -99,22 +102,22 @@ function LoginForm({ onSubmit }) {
             onChange={(e) => handlePasswordChange(e.target.value)}
           />
           {errors.password && (
-            <div className="text-danger small"><i
-            className="fa fa-exclamation-circle mr-1"
-            aria-hidden="true"
-          ></i>{errors.password}</div>
+            <div className="text-danger small">
+              <i
+                className="fa fa-exclamation-circle mr-1"
+                aria-hidden="true"
+              ></i>
+              {errors.password}
+            </div>
           )}
         </div>
 
         <div className="form-group text-center">
           <button
-            className="btn btn-primary border-0 rounded-pill w-50"
-            style={{
-              backgroundColor: "#ff2f4f",
-              fontFamily: "Bebas Neue",
-              letterSpacing: "1.6px",
-            }}
+            className="btn  border-0 rounded-pill w-50 bebas-font app-buttons"
             onClick={handleFormSubmit}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#0C2C54")}
+            onMouseLeave={(e) => (e.target.style.backgroundColor = "#ff2f4f")}
           >
             Sign In
           </button>

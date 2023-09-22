@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import CommentList from "./comments/CommentList";
-import { FaUser } from "react-icons/fa";
+import { AiFillLike } from "react-icons/ai";
+import { FaComment } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import { FaUserCircle } from "react-icons/fa";
+import { formatDistanceToNow } from "date-fns"; // Import the necessary function
+
+import "./Post.css";
 
 function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
   const [likes, setLikes] = useState(post.likes.length);
+  const [showComments, setShowComments] = useState(false);
 
   const incrementLikes = () => {
     if (post.likes.some((like) => like.id === currentUser.id)) {
@@ -26,62 +33,121 @@ function PostCard({ currentUser, post, onDeleteClick, onLikeClick }) {
     });
   };
 
-  return (
-    <div className="card mt-3 rounded-0">
-      <div className="card-body">
-        <div
-          className="card "
-          style={{
-            backgroundColor: "#6c849c",
-            color: "white",
-          }}
-        >
-          <div className="row justify-content-between">
-            <div className="row ml-4">
-              <span>
-                <FaUser size={50}></FaUser>
-              </span>
-              <h3 className="mt-4 ml-2 font-weight-bold">{post.user.name}</h3>
-            </div>
-            <em
-              className="mr-4 mt-2"
-              style={{ color: "#3a3b3c", fontSize: "10px" }}
-            >
-              {post.date.toString()}
-            </em>
-          </div>
-          <p className="ml-4 mr-4" style={{ fontFamily: "sans-serif" }}>
-            {post.body}
-          </p>
-        </div>
-        <p className="post-comment-info ">{likes === 0 ? "No" : likes} likes</p>
-        <button
-          className="btn btn-primary btn-sm rounded-0 bebas-font"
-          style={{
-            backgroundColor: "#0C2C54",
-          }}
-          onClick={incrementLikes}
-          id="post-like"
-        >
-          {post.likes.some((like) => like.id === currentUser.id)
-            ? "Unlike"
-            : "Like"}{" "}
-        </button>
-        {currentUser.id === post.user.id ? (
-          <button
-            className="btn btn-danger btn-sm mb-2 rounded-0 bebas-font"
-            style={{
-              backgroundColor: "#FA354D",
-            }}
-            onClick={onDeleteClick}
-          >
-            Delete
-          </button>
-        ) : null}
+  const toggleComments = () => {
+    setShowComments(!showComments);
+  };
 
-        <div className="comment-body ">
-          <CommentList post={post} />
+  const calculateRelativeTime = (dateString) => {
+    try {
+      // Split the date string into date and time parts
+      const [datePart, timePart] = dateString.split(', ');
+      
+      // Split the date part into day, month, year
+      const [day, month, year] = datePart.split('/');
+      
+      // Split the time part into hours, minutes, seconds
+      const [hours, minutes, seconds] = timePart.split(':');
+      
+      // Create a new Date object with the parsed values
+      const parsedDate = new Date(year, month - 1, day, hours, minutes, seconds);
+      
+      if (!isNaN(parsedDate)) {
+        // If the parsed date is valid, calculate the relative time
+        return formatDistanceToNow(parsedDate, { addSuffix: true });
+      } else {
+        // Handle the case where the date couldn't be parsed
+        return "Invalid Date";
+      }
+    } catch (error) {
+      // Handle any other errors that may occur during parsing
+      return "Invalid Date";
+    }
+  };
+
+  return (
+    <div className="card mt-3 shadow-lg">
+      <div className="card-body">
+        <div className="card background-blue text-white text-start p-4">
+          <div className="d-flex ">
+            <div className="color-red">
+              <FaUserCircle size={50} />
+            </div>
+            <div className="pl-2">
+              <h6 className="font-weight-bold text-uppercase">
+                {post.user.name}
+              </h6>
+              <h6 className="pt-1">
+                {calculateRelativeTime(post.date)} {/* Display relative time */}
+              </h6>
+            </div>
+          </div>
+          <p className="mt-4">{post.body}</p>
         </div>
+        <div className="my-3 pb-3 ml-3 d-flex border-bottom">
+          <button className="btn-circle border-0 btn-sm background-red">
+            <AiFillLike
+              style={{
+                fontSize: "15px",
+                color: "white",
+                marginBottom: "2px",
+              }}
+            />
+          </button>
+          <div className="ml-2">{likes === 0 ? "0" : likes} </div>
+        </div>
+        <div className="my-4">
+          <div className="d-flex justify-content-around ">
+            <button
+              className={`border-0 bebas-font btn-post ${
+                post.likes.some((like) => like.id === currentUser.id)
+                  ? "Unlike"
+                  : "Like"
+              }`}
+              onClick={incrementLikes}
+            >
+              <AiFillLike
+                style={{
+                  fontSize: "28px",
+                  marginRight: "15px",
+                }}
+              />
+              {post.likes.some((like) => like.id === currentUser.id)
+                ? "Unlike"
+                : "Like"}
+            </button>
+            <button
+              className="border-0 bebas-font btn-post"
+              onClick={toggleComments}
+            >
+              <FaComment
+                style={{
+                  fontSize: "25px",
+                  marginRight: "15px",
+                }}
+              />
+              {showComments ? "Close" : "Comment"}
+            </button>
+            {currentUser.id === post.user.id && (
+              <button
+                className="border-0 bebas-font btn-post"
+                onClick={onDeleteClick}
+              >
+                <AiFillDelete
+                  style={{
+                    fontSize: "28px",
+                    marginRight: "15px",
+                  }}
+                />
+                Delete
+              </button>
+            )}
+          </div>
+        </div>
+        {showComments && (
+          <div className="comment-body mb-4">
+            <CommentList post={post} />
+          </div>
+        )}
       </div>
     </div>
   );
