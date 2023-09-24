@@ -1,7 +1,15 @@
 version: "3"
 services:
+  spring-app:
+    image: defever-image
+    container_name: defever
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+
   database:
-    image: postgres
+    image: postgres:latest
     container_name: defever_db
     env_file:
       - .env

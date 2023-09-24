@@ -28,8 +28,7 @@ docker-compose.yaml
 .settings/
 .metadata/
 .history
-.project
-.classpath
+buildsrc/
 
 # Ignore generated files and logs
 *.log
@@ -43,9 +42,7 @@ Thumbs.db
 /node_modules/
 
 # Ignore Docker-related files
-docker-compose.override.yml
-docker-compose.yml
-Dockerfile
+
 
 # Ignore .env files (for environment variables)
 .env
@@ -64,16 +61,11 @@ npm-debug.log
 *.properties
 
 # Gradle
-build/
 
 # Spring Boot
-/application.properties
 
 # React
-/node_modules/
 
 # Visual Studio Code
-.vscode/
 
 # Eclipse
-.metadata/
