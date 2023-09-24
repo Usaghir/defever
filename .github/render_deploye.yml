@@ -1,0 +1,41 @@
+name: CI/CD Pipeline
+
+on: 
+  push:
+    branches:
+      - deployment  # You can adjust this to the branch you want to trigger the workflow on
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11  # Your Java version
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Docker Build
+        run: docker build -t defever-image .  # Your image name
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Compose
+        run: |
+          sudo apt-get -y install docker-compose
+        continue-on-error: true
+
+      - name: Start Docker Compose
+        run: docker-compose -f docker-compose.yml up -d
