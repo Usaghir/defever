@@ -1,0 +1,32 @@
+/* Common styles for all screen sizes */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Adjust this property to move content up */
+  min-height: 100vh; /* 100% of the viewport height */
+}
+
+.message-success {
+  color: #0c2c54;
+}
+
+/* Adjust the width for large screens (greater than or equal to 992px) */
+@media (min-width: 992px) {
+  .card-container {
+    width: 50%; /* Adjust the width for large screens */
+  }
+}
+
+/* Adjust the width for medium screens (between 768px and 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-container {
+    width: 70%; /* Adjust the width for medium screens */
+  }
+}
+
+/* Adjust the width for small screens (less than 768px) */
+@media (max-width: 767px) {
+  .card-container {
+    width: 90%; /* Adjust the width for small screens */
+  }
+}

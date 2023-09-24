@@ -1,0 +1,12 @@
+
+
+@media (max-width: 786px) {
+  .image-small {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .signUp {
+    margin-bottom: 20px;
+  }
+}

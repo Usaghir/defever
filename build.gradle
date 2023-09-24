@@ -2,16 +2,21 @@ plugins {
 	id 'org.springframework.boot' version '2.2.0.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
-	id("com.github.node-gradle.node") version "2.2.0"
 
 
+	id 'maven-publish'
+
+}
+
+repositories {
+	mavenCentral()
 }
 
 group = 'se.kth.sda'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
-apply plugin: 'maven'
+
 
 configurations {
 	developmentOnly
@@ -20,58 +25,12 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
-node {
-	version = "12.13.1"
-	download = true
-
-	// Set the work directory for unpacking node
-	workDir = file("${project.buildDir}src/main/frontend/nodejs")
-
-	// Set the work directory for NPM
-	npmWorkDir = file("${project.buildDir}src/main/frontend/npm")
-
-	nodeModulesDir = file("${project.buildDir}src/main/frontend")
-}
-
-task appNpmInstall(type: NpmTask) {
-	dependsOn 'npmSetup'
-	description = "Installs all dependencies from package.json"
-	workingDir = file("${project.projectDir}/src/main/frontend")
-	args = ["install"]
-}
-
-task appNpmBuild(type: NpmTask) {
-	dependsOn 'appNpmInstall'
-	description = "Builds production version of the frontend"
-	workingDir = file("${project.projectDir}/src/main/frontend")
-	args = ["run", "build"]
-}
-
-task copyWebApp(type: Copy) {
-	dependsOn 'appNpmBuild'
-	from 'src/main/frontend/build'
-	into 'build/resources/main/static/'
-}
-
-processResources{
-	dependsOn 'copyWebApp'
-}
-
-task copyFrontendToBuild(type: Copy) {
-	from "$projectDir/src/main/frontend/build/"
-
-	into "$buildDir/resources/main/static"
-}
 
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation group: 'com.auth0', name: 'java-jwt', version: '3.8.3'
 	runtimeOnly 'org.postgresql:postgresql'
@@ -87,6 +46,20 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
+
+
 test {
 	useJUnitPlatform()
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+
+			groupId = 'com.example'
+			artifactId = 'my-artifact'
+			version = '1.0.0'
+		}
+	}
 }
