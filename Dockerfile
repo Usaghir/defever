@@ -10,13 +10,8 @@ COPY src /app/src
 # Copy your build.gradle or build.gradle.kts file
 COPY build.gradle /app/build.gradle
 
-# Copy the Gradle Wrapper files into the container
-COPY gradle /app/gradle
-COPY gradlew /app/gradlew
-COPY gradlew.bat /app/gradlew.bat
-
-# Build your application
-RUN ./gradlew bootJar
+# Build your application without Gradle Wrapper
+RUN gradle build
 
 # Create a new stage
 FROM openjdk:11-jre-slim
