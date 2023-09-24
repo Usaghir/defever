@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AiFillDelete, AiFillLike } from "react-icons/ai";
+import { AiFillLike } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { formatDistanceToNow } from "date-fns";
 

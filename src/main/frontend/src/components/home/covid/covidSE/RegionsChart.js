@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // Import the prop-types library
 import {
   BarChart,
   CartesianGrid,
@@ -16,7 +17,7 @@ function RegionsChart({ data, dataKey }) {
       <BarChart
         data={data}
         margin={{ top: 5, right: 10, left: 20, bottom: 5 }}
-        className=" bebas-font"
+        className="bebas-font"
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="region" dy={20} />
@@ -28,5 +29,11 @@ function RegionsChart({ data, dataKey }) {
     </ResponsiveContainer>
   );
 }
+
+// Define prop types for the component
+RegionsChart.propTypes = {
+  data: PropTypes.array.isRequired, // Assumes data is an array, adjust the type accordingly
+  dataKey: PropTypes.string.isRequired, // Assumes dataKey is a string, adjust the type accordingly
+};
 
 export default RegionsChart;

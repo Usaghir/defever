@@ -25,7 +25,7 @@ function Landing() {
           {registerSuccess === false && (
             <div className="alert custom-alert-danger mt-3">
               <i className="fa fa-exclamation-circle" aria-hidden="true"></i>
-              Couldn't register. Check credentials and try again.
+              Could not register. Check credentials and try again.
             </div>
           )}
         </div>

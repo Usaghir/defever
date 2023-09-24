@@ -11,7 +11,7 @@ class CommentsApi {
   }
 
   updateComment(comment) {
-    return Api.put('/comments', comment);
+    return Api.put("/comments", comment);
   }
 
   deleteComment(id) {
@@ -19,4 +19,5 @@ class CommentsApi {
   }
 }
 
-export default new CommentsApi();
+const commentApiInstance = new CommentsApi();
+export default commentApiInstance;

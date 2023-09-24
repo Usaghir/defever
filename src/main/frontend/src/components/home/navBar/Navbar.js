@@ -44,17 +44,6 @@ function Navbar(props) {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/news"
-                  className="nav-link  text-uppercase link-style"
-                  style={{
-                    color: "#0C2C54",
-                  }}
-                >
-                  News
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
                   to="/posts"
                   className="nav-link  text-uppercase link-style"
                   style={{
@@ -64,23 +53,22 @@ function Navbar(props) {
                   Posts
                 </Link>
               </li>
-
               <li className="nav-item">
                 <Link
-                  to="/chat"
+                  to="/news"
                   className="nav-link  text-uppercase link-style"
                   style={{
                     color: "#0C2C54",
                   }}
                 >
-                  Chat
+                  News
                 </Link>
               </li>
             </ul>
             <ul className="navbar-nav ">
               <li className="nav-item">
                 <Link to="/profile" className="nav-link">
-                  <span className="color-red">
+                  <span className="color-blue" >
                     <FaUserCircle size={50}></FaUserCircle>
                   </span>
                 </Link>
@@ -90,13 +78,10 @@ function Navbar(props) {
               </li>
               <li className="nav-item r-margin-b">
                 <button
-                  className="btn  border-0 rounded-pill  bebas-font app-buttons r-margin-logout "
-                  onMouseOver={(e) =>
-                    (e.target.style.backgroundColor = "#0C2C54")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = "#ff2f4f")
-                  }
+                  className="btn  border-0 rounded-pill  bebas-font r-margin-logout "
+                  style ={{backgroundColor: "#ff2f4f", color: "white"}}
+                  onMouseOver={(e) => (e.target.style.backgroundColor = "#0C2C54")}
+                  onMouseLeave={(e) => (e.target.style.backgroundColor = "#ff2f4f")}
                   onClick={props.onLogout}
                 >
                   Logout

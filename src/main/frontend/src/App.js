@@ -6,14 +6,12 @@ import "./App.css";
 
 import Auth from "./services/Auth";
 import Navbar from "./components/home/navBar/Navbar";
-import Footer from "./components/landing/Footer";
 
 // Import pages
 import Landing from "./components/landing/Landing";
 import Covid from "./components/home/covid/Covid";
 import Posts from "./components/home/posts/Posts";
 import Profile from "./components/home/profile/Profile";
-import Chat from "./components/home/chat/Chat";
 import News from "./components/home/news/News";
 //import ChatApp from "./ChatApp";
 
@@ -34,10 +32,8 @@ function App() {
             <Routes>
               <Route path="/posts" element={<Posts />} />
               <Route path="/profile" element={<Profile user={user} />} />
-              <Route path="/chat" element={<Chat user={user} />} />
               <Route path="/news" element={<News />} />
               <Route path="/" element={<Covid />} />
-              
             </Routes>
           </div>
         </Router>

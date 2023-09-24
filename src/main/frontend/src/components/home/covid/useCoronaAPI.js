@@ -14,7 +14,6 @@ export function useCoronaAPI(
       try {
         const response = await fetch(`${BASE_URL}${path}`);
         const data = await response.json();
-        console.log(data);
         setData(convertData(data));
       } catch (error) {
         console.log(error);

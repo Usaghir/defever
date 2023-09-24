@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import CovidWorld from "./covidWorld/CovidWorld";
-import CovidSE from "./covidSE/CovidSE";
 import "./Covid.css";
 
 import { Tabs, Tab } from "react-bootstrap";
@@ -8,7 +7,7 @@ import { Tabs, Tab } from "react-bootstrap";
 class Covid extends Component {
   render() {
     return (
-      <div className="bg-light  ">
+      <div className="bg-light card mb-2 mt-2">
         <Tabs
           variant="tab"
           className="pt-3 pb-3 justify-content-center myClass bebas-font"

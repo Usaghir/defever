@@ -1,11 +1,11 @@
-import React, { useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useReducer, useState, useEffect } from "react";
 
 import GlobalStats from "./GlobalStats";
 import CountriesChart from "./CountriesChart";
 import SelectDataKey from "./SelectDataKey";
 import { useCoronaAPI } from "../useCoronaAPI";
 import HistoryChartGroup from "./HistoryChartGroup";
+import LoadingSkeleton from "../../../shared/LoadingSkeleton";
 
 const initialState = {
   key: "cases",
@@ -41,18 +41,29 @@ function CovidWorld() {
 
   const globalStats = useCoronaAPI("/all", {
     initialData: {},
-    refetchInterval: 10000,
+    refetchInterval: null,
   });
+
+  const [isLoadingCountries, setIsLoadingCountries] = useState(true);
 
   const countries = useCoronaAPI(`/countries?sort=${key}`, {
     initialData: [],
     converter: (data) => data.slice(0, 15),
   });
 
+  // Check if the countries data is available
+  useEffect(() => {
+    if (countries && countries.length > 0) {
+      setIsLoadingCountries(false);
+    }
+  }, [countries]);
+
   const history = useCoronaAPI(`/historical/${country}`, {
     initialData: {},
     converter: (data) => data.timeline,
   });
+
+  if (isLoadingCountries) return <LoadingSkeleton />;
 
   return (
     <AppDispatch.Provider value={dispatch}>
@@ -62,7 +73,10 @@ function CovidWorld() {
 
         <SelectDataKey />
 
-        <CountriesChart data={countries} dataKey={key} />
+        {countries.length > 0 && (
+          <CountriesChart data={countries} dataKey={key} />
+        )}
+
         {country ? (
           <div className="text-center ">
             <h2 className="bebas-font py-4 my-4">History for {country}</h2>
@@ -70,7 +84,7 @@ function CovidWorld() {
           </div>
         ) : (
           <p className="bebas-font text-center mt-4 pb-4">
-            Click on a country bar to see it's history
+            Click on a country bar to see its history
           </p>
         )}
       </div>

@@ -114,8 +114,9 @@ function LoginForm({ onSubmit }) {
 
         <div className="form-group text-center">
           <button
-            className="btn  border-0 rounded-pill w-50 bebas-font app-buttons"
+            className="btn  border-0 rounded-pill w-50 bebas-font"
             onClick={handleFormSubmit}
+            style={{ backgroundColor: "#ff2f4f", color: "white" }}
             onMouseOver={(e) => (e.target.style.backgroundColor = "#0C2C54")}
             onMouseLeave={(e) => (e.target.style.backgroundColor = "#ff2f4f")}
           >

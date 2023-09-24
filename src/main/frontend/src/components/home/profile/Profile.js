@@ -202,8 +202,9 @@ function Profile({ user }) {
 
             <div className="form-group text-center">
               <button
-                className="btn  border-0 rounded-pill w-50 bebas-font app-buttons"
+                className="btn  border-0 rounded-pill w-50 bebas-font"
                 onClick={handleFormSubmit}
+                style={{ backgroundColor: "#ff2f4f", color: "white" }}
                 onMouseOver={(e) =>
                   (e.target.style.backgroundColor = "#0C2C54")
                 }
@@ -211,7 +212,7 @@ function Profile({ user }) {
                   (e.target.style.backgroundColor = "#ff2f4f")
                 }
               >
-                Sign In
+                submit
               </button>
               {successMessage && (
                 <div className="message-success small mt-2">
