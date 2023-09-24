@@ -10,6 +10,13 @@ COPY src /app/src
 # Copy your build.gradle or build.gradle.kts file
 COPY build.gradle /app/build.gradle
 
+# Copy the Gradle Wrapper files
+COPY gradlew /app/gradlew
+COPY gradle /app/gradle
+
+# Make the Gradle Wrapper executable
+RUN chmod +x /app/gradlew
+
 # Build your application
 RUN ./gradlew build
 
