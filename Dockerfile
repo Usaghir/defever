@@ -17,6 +17,9 @@ COPY gradle /app/gradle
 # Make the Gradle Wrapper executable
 RUN chmod +x /app/gradlew
 
+# Install any required packages, including the Java compiler
+RUN apt-get update && apt-get install -y openjdk-11-jdk
+
 # Build your application
 RUN ./gradlew build
 
