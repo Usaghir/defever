@@ -5,10 +5,10 @@ FROM openjdk:11-jre-slim
 WORKDIR /app
 
 # Copy the Spring Boot JAR file from the project's build directory into the container
-COPY build/libs/defever-*.jar /app/app.jar
+COPY build/libs/defever-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Expose the port your Spring Boot application will run on
 EXPOSE 8080
 
 # Define the command to run your Spring Boot application
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
