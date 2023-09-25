@@ -1,7 +1,7 @@
 version: "3"
 services:
   spring-app:
-    image: defever-image
+    image: defever-image  # Use the image name from your new Docker image
     container_name: defever
     ports:
       - "8080:8080"
