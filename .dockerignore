@@ -1,0 +1,28 @@
+# Exclude commonly unneeded files and directories
+.apt_generated
+.gradle
+.idea
+.vscode
+.DS_Store
+HELP.md
+.idae
+bin
+out
+*.iws
+*.iml
+*.ipr
+.nbproject
+nbbuild
+dist
+nbdist
+.nb-gradle
+node_modules
+.git
+gradle
+
+
+# Include specific directories in the build context
+# Ensure that your project directory structure is maintained
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
