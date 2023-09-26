@@ -4,7 +4,7 @@ FROM gradle:6.9.1-jdk11 AS build
 WORKDIR /home/gradle/project
 
 # Copy your Gradle project files into the container
-COPY build.gradle settings.gradle /home/gradle/project/
+COPY build.gradle /home/gradle/project/
 COPY src /home/gradle/project/src/
 
 # Build your application, excluding tests
