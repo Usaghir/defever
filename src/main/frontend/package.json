@@ -42,7 +42,7 @@
   },
   "name": "frontend",
   "private": true,
-  "proxy": "https://defever-production.up.railway.app/",
+  "proxy": "https://defever.onrender.com",
   "scripts": {
     "build": "react-scripts build",
     "eject": "react-scripts eject",
