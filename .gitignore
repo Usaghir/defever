@@ -24,7 +24,7 @@ docker-compose.yaml
 *.iml
 *.ipr
 out/
-
+.env
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

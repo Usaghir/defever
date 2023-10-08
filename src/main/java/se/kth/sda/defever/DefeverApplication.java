@@ -23,7 +23,7 @@ public class  DefeverApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry
 					.addMapping("/**")
-					.allowedOrigins("http://localhost:3000")
+					.allowedOrigins("https://defever-o5a5.onrender.com")
 					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
 
 
