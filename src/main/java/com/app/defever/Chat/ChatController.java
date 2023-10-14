@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @Controller
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://defever-production.up.railway.app")
 public class ChatController {
 
 	@Autowired

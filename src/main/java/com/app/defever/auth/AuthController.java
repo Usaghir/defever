@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://defever-production.up.railway.app")
 public class AuthController {
     @Autowired
     private AuthService authService;
