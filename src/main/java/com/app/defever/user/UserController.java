@@ -8,7 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "https://defever-production.up.railway.app")
+@CrossOrigin(origins = "https://defever.onrender.com")
 public class
 UserController {
   @Autowired private UserService userService;

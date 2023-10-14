@@ -12,7 +12,7 @@ import java.util.List;
 */
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins = "https://defever-production.up.railway.app")
+@CrossOrigin(origins = "https://defever.onrender.com")
 public class PostController {
   @Autowired private PostService postService;
 
