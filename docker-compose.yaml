@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend:
+    build: .
+    container_name: defever_api_container
+    ports:
+      - 8080:8080
+    environment:
+      - database-url=jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - database-username=${DB_USERNAME}
+      - database-password=${DB_PASSWORD}
+    depends_on:
+      - database
+    restart: always
+
+
+  database:
+    container_name: defever_db_container
+    image: postgres:alpine
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - 5432:5432
+    restart: always
