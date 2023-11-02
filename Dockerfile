@@ -7,5 +7,5 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17.0.1-jdk-slim
 COPY --from=build /target/defever-2.0.1-SNAPSHOT.jar defever.jar
 COPY src/main/resources/keystore.p12 /keystore.p12
-EXPOSE 8080
+EXPOSE 8080 443  # Expose both port 8080 and 443
 ENTRYPOINT ["java", "-jar", "defever.jar"]
