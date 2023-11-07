@@ -12,7 +12,7 @@ import java.util.List;
 */
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins = "https://defever.onrender.com")
+@CrossOrigin(origins = "https://defever.netlify.app")
 public class PostController {
   @Autowired private PostService postService;
 

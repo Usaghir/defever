@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/comments")
-@CrossOrigin(origins = "https://defever.onrender.com")
+@CrossOrigin(origins = "https://defever.netlify.app")
 public class CommentController {
   @Autowired private CommentService commentService;
 
